@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+const questions = [
+  { number: '01', title: 'Was a decision made?', text: 'Has DHS decided that Ukraine no longer qualifies for TPS? We are asking for the decision and its exact date, including whether it was adopted by August 20.', anchor: '1-was-a-decision-made-and-on-what-date' },
+  { number: '02', title: 'How does the extension rule apply?', text: 'If no qualifying decision was made by the deadline, how is DHS applying the extension provided by law?', anchor: '2-how-is-dhs-applying-the-extension-rule' },
+  { number: '03', title: 'What supports the announcement?', text: 'What decision and Federal Register publication support the statement that Ukraine TPS is set to end on October 19?', anchor: '3-what-supports-the-announcement-that-tps-is-ending' },
+  { number: '04', title: 'What happens the next day?', text: 'Who remains protected and authorized to work after October 19, until when, and what documents can they use to prove it?', anchor: '4-who-can-remain-protected-and-keep-working-after-october-19' },
+];
+---
+<Layout title="Ukraine TPS Collective — Clear answers for our communities" description="A community initiative asking Congress to obtain clear, written answers about Ukraine TPS, protection, and work authorization after October 19, 2026.">
+  <section class="hero shell" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="blue-rule"></span> Ukraine TPS · A community inquiry</p>
+      <h1 id="hero-title">Uncertainty affects lives.<br /><em>We’re asking for<br class="desktop-break" /> clear answers.</em></h1>
+      <p class="hero-description">What happens to Ukraine TPS after October 19, 2026? We’re asking Congress to get a clear, written answer from the agencies responsible.</p>
+      <a class="button" href="/background/">Understand the issue</a>
+      <p class="hero-note">You can support this inquiry even if TPS does not affect you personally.</p>
+    </div>
+    <aside class="date-card" aria-label="The date at the center of this inquiry">
+      <p class="eyebrow">The date in question</p>
+      <div class="date-display"><span>October</span><strong>19</strong><span>2026</span></div>
+      <div class="date-card-bottom"><span class="small-rule"></span><p>The last day of the previously announced TPS period.</p><p class="date-card-muted">Families and employers need to know what comes next.</p></div>
+    </aside>
+  </section>
+  <div class="context-strip"><div class="shell"><span>Protection. Work. Everyday life.</span><span>Clarity matters for all three.</span></div></div>
+  <section class="section shell intro-section" aria-labelledby="why-title">
+    <div class="section-label"><span class="eyebrow">01 / The situation</span><h2 id="why-title">An approaching date.<br />Unanswered questions.</h2></div>
+    <div class="intro-copy">
+      <p class="lead">Temporary Protected Status gives eligible people granted that status temporary protection from deportation and permission to work in the United States.</p>
+      <p>Ukraine received TPS because of the war. The previously announced extension runs through October 19, 2026. A September USCIS notice says TPS and related benefits are set to end on that date, but does not identify the formal decision behind that statement or explain what happens afterward.</p>
+      <p>Our inquiry asks Congress to obtain the decision, its date, its legal basis, and practical instructions for affected people and employers.</p>
+      <a class="text-link" href="https://content.govdelivery.com/accounts/USDHSCISEVERIFY/bulletins/42855b0">Read the September USCIS notice</a>
+    </div>
+  </section>
+  <section class="questions-section" aria-labelledby="questions-title"><div class="shell section">
+    <div class="questions-heading"><div><p class="eyebrow">02 / The inquiry</p><h2 id="questions-title">Four questions.<br /><em>One need for clarity.</em></h2></div><p>We want answers people can rely on when planning their lives, their work, and their families’ futures.</p></div>
+    <div class="question-grid">{questions.map(question => <a class="question" href={`/background/#${question.anchor}`}><span class="question-number">{question.number}</span><h3>{question.title}</h3><p>{question.text}</p><span class="question-link">Why we ask</span></a>)}</div>
+  </div></section>
+  <section class="section shell people-section" aria-labelledby="people-title">
+    <div><p class="eyebrow">03 / Why it matters</p><h2 id="people-title">Behind the policy,<br /><em>everyday lives.</em></h2></div>
+    <div><p class="lead">For families who rely on TPS, uncertainty reaches far beyond an immigration document.</p><p>Protection from deportation, permission to work, household income, driver’s license renewal, and employer-provided health insurance can all be affected. The consequences depend on each person’s circumstances and any other status or authorization they hold.</p><a class="text-link" href="/background/#why-this-matters-for-families-and-employers">Read about the practical impact</a></div>
+  </section>
+  <section class="closing shell"><div><p class="eyebrow">The outcome we’re asking for</p><h2>A written answer.<br />A clearer path forward.</h2><p>We want DHS and USCIS to explain the applicable dates and documents, so affected people and their employers know what to expect.</p></div><a class="button button-light" href="/background/">Read the full background</a></section>
+</Layout>
