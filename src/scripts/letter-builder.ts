@@ -62,6 +62,15 @@ if (root) {
       return;
     }
     element('recipient-context').textContent = person.context;
+    if ('contextLink' in person) {
+      const [before, after] = person.context.split(person.contextLink.text);
+      const sourceLink = document.createElement('a');
+      sourceLink.textContent = person.contextLink.text;
+      sourceLink.href = person.contextLink.href;
+      sourceLink.target = '_blank';
+      sourceLink.rel = 'noopener noreferrer';
+      element('recipient-context').replaceChildren(before, sourceLink, after);
+    }
     element('topic-instruction').textContent = person.topic;
     element('mailing-address').textContent = person.address;
     show('mailing-address', !isRepresentative);
