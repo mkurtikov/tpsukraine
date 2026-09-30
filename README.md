@@ -2,7 +2,7 @@
 
 **Local development only.** Do not upload, publish, or deploy this project unless the user explicitly requests it. The previous Sites publication was withdrawn at the user's request on September 30, 2026.
 
-A static Astro site with two routes: `/` (overview) and `/background/` (the full briefing). Take Action and the letter generator are intentionally deferred.
+A static Astro site with three routes: `/` (overview), `/background/` (the full briefing), and `/take-action/` (the How can I help? placeholder). A fixed help button on the two reading pages links to the placeholder; the message builder is intentionally deferred.
 
 ## Develop
 

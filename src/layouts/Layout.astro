@@ -2,6 +2,7 @@
 import '../styles/global.css';
 interface Props { title: string; description: string; page?: string }
 const { title, description, page = 'overview' } = Astro.props;
+const showHelpAction = page !== 'help';
 ---
 <!doctype html>
 <html lang="en">
@@ -16,7 +17,7 @@ const { title, description, page = 'overview' } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body>
+  <body class:list={{ 'has-help-action': showHelpAction }}>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header shell">
       <a class="brand" href="/" aria-label="Ukraine TPS Collective — home">
@@ -26,12 +27,20 @@ const { title, description, page = 'overview' } = Astro.props;
       <nav aria-label="Main navigation">
         <a href="/" aria-current={page === 'overview' ? 'page' : undefined}>Overview</a>
         <a href="/background/" aria-current={page === 'background' ? 'page' : undefined}>TPS background</a>
+        <a href="/take-action/" aria-current={page === 'help' ? 'page' : undefined}>How to help</a>
       </nav>
     </header>
     <main id="main"><slot /></main>
     <footer class="site-footer shell">
-      <div><a class="footer-brand" href="/">Ukraine TPS Collective</a><p>A community initiative by Michael Kurtikov and Lidii Kyrylova.</p></div>
-      <div class="footer-meta"><span>For clarity. For our communities.</span><span>Source materials updated September 29, 2026</span></div>
+      <span>Source materials updated September 29, 2026</span>
     </footer>
+    {showHelpAction && (
+      <aside class="help-action" aria-label="Help request answers about Ukraine TPS">
+        <div class="shell help-action-inner">
+          <p>Help ask for clear answers about Ukraine TPS.</p>
+          <a class="button" href="/take-action/">How can I help?</a>
+        </div>
+      </aside>
+    )}
   </body>
 </html>
