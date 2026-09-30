@@ -63,25 +63,6 @@ body>main {
   max-width:960px;
   padding-block:70px;
 }
-.help-page>.lead {
-  margin:26px 0 40px;
-}
-.help-placeholder {
-  padding:32px;
-  border:1px solid var(--line);
-  border-top:4px solid var(--yellow);
-  background:#fff;
-}
-.help-placeholder .eyebrow {
-  color:var(--blue);
-  margin-bottom:16px;
-}
-.help-placeholder h2 {
-  margin-bottom:24px;
-}
-.help-placeholder p:last-child {
-  margin-bottom:0;
-}
 a {
   color:var(--blue);
   text-underline-offset:5px;
@@ -89,7 +70,7 @@ a {
 a:hover {
   text-decoration-thickness:2px;
 }
-a:focus-visible,summary:focus-visible {
+a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {
   outline:3px solid var(--blue);
   outline-offset:6px;
 }
@@ -697,9 +678,6 @@ p {
   }
   .help-page h1 {
     font-size:2.75rem;
-  }
-  .help-placeholder {
-    padding:24px 20px;
   }
   .shell {
     width:calc(100% - 40px);

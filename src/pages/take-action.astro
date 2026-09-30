@@ -1,16 +1,129 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { recipients } from '../lib/letter-builder';
+import '../styles/letter-builder.css';
 ---
-<Layout title="How can I help? — Ukraine TPS Collective" description="A message builder to help you request clear answers about Ukraine TPS from your senators and U.S. representative is coming soon." page="help">
-  <section class="shell help-page" aria-labelledby="help-title">
-    <p class="eyebrow">How to help</p>
-    <h1 id="help-title">How can I help?</h1>
-    <p class="lead">Ask Congress to help get clear, written answers about Ukraine TPS.</p>
-    <div class="help-placeholder">
-      <p class="eyebrow">Coming soon</p>
-      <h2>A message builder for your inquiry.</h2>
-      <p>We’re preparing a tool to help you write to senators and your U.S. representative. You’ll be able to choose a recipient, add your details, and prepare a message to send through their official contact form.</p>
-      <p>The message builder is not available yet. We’ll add it here when it’s ready.</p>
+<Layout title="How can I help? — Ukraine TPS Collective" description="Prepare a personal letter asking senators or your U.S. representative for clear answers about Ukraine TPS. Review your letter and send it online or by post." page="help">
+  <section class="shell help-page builder-page" aria-labelledby="help-title">
+    <header class="builder-intro">
+      <p class="eyebrow">How to help</p>
+      <h1 id="help-title">Your voice. <em>A request for answers.</em></h1>
+      <p class="lead">Ask Congress to help get clear, written answers about Ukraine TPS. Choose a senator or your U.S. representative, add your details, and review your letter. Then send it through their official contact form or by post.</p>
+      <p>This first version is for <strong>Texas residents</strong>. You can write whether or not TPS affects you personally.</p>
+    </header>
+    <noscript><p class="builder-notice">Please enable JavaScript to fill in and copy your letter. The builder works entirely in your browser.</p></noscript>
+    <div class="builder-grid" id="letter-builder">
+      <div class="builder-options">
+        <fieldset class="builder-section">
+          <legend>Who would you like to contact?</legend>
+          <div class="builder-field">
+            <label for="recipient">Recipient</label>
+            <select id="recipient" required>
+              <option value="">Choose a recipient</option>
+              {Object.entries(recipients).map(([id, person]) => <option value={id}>{id === 'representative' ? person.name : `Senator ${person.name}`} — {person.state}</option>)}
+            </select>
+          </div>
+          <p class="field-help" id="recipient-context">Choose one recipient for each letter. You can return and prepare another.</p>
+          <div id="representative-fields" hidden>
+            <a class="button" href={recipients.representative.form} target="_blank" rel="noopener noreferrer">Find my representative ↗</a>
+            <p class="field-help external-note">Opens House.gov in a new tab. Enter your ZIP code there and follow the steps to find your representative. Nothing you enter here is sent with the link.</p>
+            <div class="builder-field">
+              <label for="representative-name">Your representative’s last name</label>
+              <input id="representative-name" type="text" autocomplete="off" maxlength="100" placeholder="Last name, e.g. Roy" aria-describedby="representative-name-help representative-name-warning" />
+              <span class="field-help field-warning" id="representative-name-warning" role="status" hidden></span>
+              <span class="field-help" id="representative-name-help">Enter only their last name, for example Roy. The greeting will read “Dear Representative Roy”.</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="builder-section">
+          <legend>Your details</legend>
+          <p class="field-help">Use the name and address you want to appear in your letter.</p>
+          <div class="builder-field">
+            <label for="full-name">Full name</label>
+            <input id="full-name" type="text" autocomplete="off" maxlength="120" required placeholder="First and last name" aria-describedby="privacy-note" />
+          </div>
+          <div class="personal-row">
+            <div class="builder-field">
+              <label for="city">City</label>
+              <input id="city" type="text" autocomplete="off" maxlength="100" required />
+            </div>
+            <div class="builder-field">
+              <label for="zip-code">ZIP code</label>
+              <input id="zip-code" type="text" autocomplete="off" inputmode="numeric" required aria-describedby="zip-help zip-warning" />
+              <span class="field-help field-warning" id="zip-warning" role="status" hidden></span>
+              <span class="field-help" id="zip-help">5 digits or ZIP+4</span>
+            </div>
+          </div>
+          <p class="field-help">State: Texas</p>
+          <label class="choice" for="us-citizen">
+            <input id="us-citizen" type="checkbox" checked />
+            <span>I am a U.S. citizen.</span>
+          </label>
+          <p class="privacy-note" id="privacy-note"><strong>We do not collect your information.</strong> Everything you enter is used only to fill in your letter preview. We do not save it or send it anywhere.</p>
+        </fieldset>
+
+        <fieldset class="builder-section">
+          <legend>Would you like to support an extension?</legend>
+          <label class="choice extension-choice" for="support-extension">
+            <input id="support-extension" type="checkbox" checked aria-describedby="extension-help" />
+            <span>I support an 18-month extension of TPS for Ukraine.</span>
+          </label>
+          <p class="field-help" id="extension-help">This is optional and selected by default. Uncheck the box to remove the paragraph supporting an extension and request information and official clarification only.</p>
+        </fieldset>
+
+        <fieldset class="builder-section">
+          <legend>How would you like to send it?</legend>
+          <div class="delivery-choices">
+            <label class="choice"><input type="radio" name="delivery" value="online" checked /> <span>Online contact form</span></label>
+            <label class="choice"><input type="radio" name="delivery" value="post" /> <span>Postal mail</span></label>
+          </div>
+          <p class="field-help postal-recommendation" id="postal-recommendation" hidden><strong>We recommend the online contact form because this inquiry is urgent.</strong> You can still prepare a letter for postal mail below.</p>
+          <div class="builder-field" id="street-field" hidden>
+            <label for="street-address">Street address and apartment</label>
+            <input id="street-address" type="text" autocomplete="off" maxlength="180" aria-describedby="street-help privacy-note" />
+            <span class="field-help" id="street-help">Included as your return address in the postal letter.</span>
+          </div>
+        </fieldset>
+
+        <section class="builder-next" aria-labelledby="next-title">
+          <h2 id="next-title">What happens next</h2>
+          <p id="instructions-empty">Choose a recipient to see where to send your letter and what to do next.</p>
+          <div id="online-instructions" hidden>
+            <ol>
+              <li>Review your letter and select <strong>Copy text</strong>.</li>
+              <li id="form-instruction">Open the recipient’s official form. Enter the contact details it requests, then paste your letter into the message field. If there is a subject field, move the first line there.</li>
+              <li id="topic-instruction"></li>
+              <li>Review the completed form and submit it yourself.</li>
+            </ol>
+            <a class="button" id="official-form" target="_blank" rel="noopener noreferrer">Open official contact form ↗</a>
+            <p class="field-help external-note">Opens an official website in a new tab. Nothing you enter here is sent with the link.</p>
+          </div>
+          <div id="postal-instructions" hidden>
+            <ol>
+              <li>Add your return address, review the letter, and select <strong>Copy text</strong>.</li>
+              <li>Paste it into a document, print it, and sign above your name.</li>
+              <li id="envelope-instruction">Address an envelope to the office below. Add your return address and postage, then mail it.</li>
+            </ol>
+            <address id="mailing-address"></address>
+            <a id="office-source" target="_blank" rel="noopener noreferrer">Check the address on the official website ↗</a>
+          </div>
+        </section>
+      </div>
+
+      <section class="letter-preview" aria-labelledby="preview-title">
+        <div class="preview-header">
+          <div><p class="eyebrow">Letter preview</p><h2 id="preview-title">Your letter</h2></div>
+          <button class="button" id="copy-letter" type="button" disabled>Copy text</button>
+        </div>
+        <p class="preview-status" id="preview-status" role="status">Choose a recipient to start your letter.</p>
+        <textarea id="letter-text" aria-label="Your generated letter" aria-describedby="preview-status" readonly spellcheck="false" placeholder="Your letter will appear here. As you fill in your details, the preview updates automatically."></textarea>
+        <p class="field-help preview-note">Review the full text before sending. This page prepares your letter; it does not send it.</p>
+      </section>
     </div>
   </section>
 </Layout>
+
+<script>
+  import '../scripts/letter-builder';
+</script>
