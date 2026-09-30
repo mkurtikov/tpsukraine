@@ -528,6 +528,13 @@ p {
   color:var(--muted);
   margin:24px 0 0;
 }
+.legal-note {
+  max-width:80ch;
+  margin:20px 0 0;
+  font-size:1.125rem;
+  line-height:1.6;
+  color:var(--ink);
+}
 .article-layout {
   display:grid;
   grid-template-columns:250px minmax(0,1fr);
@@ -538,8 +545,11 @@ p {
 .article-sidebar {
   position:sticky;
   top:30px;
+  max-height:calc(100svh - 30px - 7rem - env(safe-area-inset-bottom, 0px));
+  overflow-y:auto;
+  scrollbar-gutter:stable;
   border-top:2px solid var(--blue);
-  padding-top:20px;
+  padding:20px 12px 8px 0;
 }
 .article-sidebar .eyebrow {
   margin-bottom:20px;
@@ -656,8 +666,24 @@ p {
     padding:25px;
   }
   .article-layout {
-    grid-template-columns:190px minmax(0,1fr);
-    gap:38px;
+    display:block;
+  }
+  .article-sidebar {
+    display:none;
+  }
+  .mobile-contents {
+    display:block;
+    border-block:1px solid var(--line);
+    padding:16px 0;
+    margin-bottom:32px;
+  }
+  .mobile-contents summary {
+    font-size:1.125rem;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .mobile-contents .contents-links {
+    padding:20px 0 4px;
   }
   .closing {
     gap:30px;
@@ -851,26 +877,6 @@ p {
   .article-deck {
     font-size:1.25rem;
   }
-  .article-layout {
-    display:block;
-  }
-  .article-sidebar {
-    display:none;
-  }
-  .mobile-contents {
-    display:block;
-    border-block:1px solid var(--line);
-    padding:16px 0;
-    margin-bottom:32px;
-  }
-  .mobile-contents summary {
-    font-size:1.125rem;
-    font-weight:600;
-    cursor:pointer;
-  }
-  .mobile-contents .contents-links {
-    padding:20px 0 4px;
-  }
   .prose {
     font-size:1.25rem;
   }
@@ -884,11 +890,40 @@ p {
   .prose table {
     font-size:1.25rem;
   }
-  .prose td,.prose th {
-    padding:12px 9px;
+  .prose thead {
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip-path:inset(50%);
+    white-space:nowrap;
+    border:0;
   }
-  .prose td:first-child {
-    width:35%;
+  .prose tbody,
+  .prose tbody tr,
+  .prose tbody td {
+    display:block;
+    width:100%;
+  }
+  .prose tbody tr {
+    margin-bottom:20px;
+    border:1px solid var(--line);
+    background:white;
+  }
+  .prose tbody td {
+    padding:16px;
+    border:0;
+  }
+  .prose tr:nth-child(even) td {
+    background:transparent;
+  }
+  .prose tbody tr td:first-child {
+    width:100%;
+    background:#eaf0f6;
+    border-bottom:1px solid var(--line);
+    font-weight:600;
   }
   .reading-meta {
     font-size:1rem;
@@ -907,12 +942,6 @@ p {
   }
   .date-card {
     grid-template-columns:90px 1fr;
-  }
-  .prose table {
-    font-size:1.25rem;
-  }
-  .prose td,.prose th {
-    padding:10px 6px;
   }
 }
 @media(prefers-reduced-motion:reduce) {

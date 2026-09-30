@@ -53,6 +53,7 @@ export interface LetterDetails {
 }
 
 const singleLine = (value: string) => value.replace(/\s+/g, ' ').trim();
+const septemberNotice = 'https://content.govdelivery.com/accounts/USDHSCISEVERIFY/bulletins/42855b0';
 
 export function buildLetter(details: LetterDetails): string {
   const person = recipients[details.recipient];
@@ -72,6 +73,7 @@ export function buildLetter(details: LetterDetails): string {
     .replaceAll('[Last name]', () => singleLine(details.representativeName) || '[Representative’s last name]')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
+  body += `\n\nReference: USCIS E-Verify bulletin, September 3, 2026\n${septemberNotice}`;
   if (details.delivery === 'post') {
     const recipientAddress = person.address ? `${person.address}\n\n` : '';
     body = `${name}\n${street}\n${location}\n\n${recipientAddress}${body}\n\nSincerely,\n\n${name}`;

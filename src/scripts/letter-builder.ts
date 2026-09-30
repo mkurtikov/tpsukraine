@@ -1,5 +1,6 @@
 import { buildLetter, recipients, type RecipientId } from '../lib/letter-builder';
 import { isKnownTexasRepresentative } from '../lib/texas-representatives';
+import { isTexasZip } from '../lib/texas-zip';
 
 const root = document.querySelector<HTMLElement>('#letter-builder');
 if (root) {
@@ -17,6 +18,7 @@ if (root) {
   const status = root.querySelector<HTMLElement>('#preview-status')!;
   let version = 0;
   let hasDataIssues = false;
+  const reviewedFields = new Set<HTMLInputElement>();
   const dataWarning = 'Please double check your data. It may be incomplete or incorrect.';
 
   const element = (id: string) => root.querySelector<HTMLElement>(`#${id}`)!;
@@ -33,14 +35,15 @@ if (root) {
     representativeName.disabled = !isRepresentative;
     const unknownName = isRepresentative && !!representativeName.value.trim()
       && !isKnownTexasRepresentative(representativeName.value);
-    show('representative-name-warning', unknownName);
-    element('representative-name-warning').textContent = unknownName ? 'Please double check the name.' : '';
-    representativeName.setAttribute('aria-invalid', String(unknownName));
-    const validZip = /^[0-9]{5}(-[0-9]{4})?$/.test(zip.value.trim());
-    const invalidZip = !!zip.value.trim() && !validZip;
+    const showNameWarning = unknownName && reviewedFields.has(representativeName);
+    show('representative-name-warning', showNameWarning);
+    element('representative-name-warning').textContent = showNameWarning ? 'Please double check the name.' : '';
+    representativeName.setAttribute('aria-invalid', String(showNameWarning));
+    const validZip = isTexasZip(zip.value);
+    const invalidZip = !!zip.value.trim() && !validZip && reviewedFields.has(zip);
     zip.setAttribute('aria-invalid', String(invalidZip));
     show('zip-warning', invalidZip);
-    element('zip-warning').textContent = invalidZip ? 'Please double check the ZIP code.' : '';
+    element('zip-warning').textContent = invalidZip ? 'Please double check your Texas ZIP code.' : '';
     show('street-field', isPost);
     show('postal-recommendation', isPost);
     street.required = isPost;
@@ -86,9 +89,21 @@ if (root) {
     status.textContent = '';
   }
 
-  root.addEventListener('input', update);
+  root.addEventListener('input', (event) => {
+    if (event.target === zip || event.target === representativeName) reviewedFields.delete(event.target);
+    update();
+  });
   root.addEventListener('change', update);
+  root.addEventListener('focusout', (event) => {
+    if (event.target === zip || event.target === representativeName) {
+      reviewedFields.add(event.target);
+      update();
+    }
+  });
   copy.addEventListener('click', async () => {
+    reviewedFields.add(zip);
+    reviewedFields.add(representativeName);
+    update();
     if (copy.disabled) return;
     const currentVersion = version;
     const letter = preview.value;
