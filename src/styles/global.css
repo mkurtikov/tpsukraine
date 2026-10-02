@@ -478,8 +478,7 @@ p {
 }
 .site-footer {
   display:flex;
-  justify-content:space-between;
-  gap:30px;
+  flex-direction:column;
   padding-block:30px 40px;
   border-top:1px solid var(--line);
   font-size:1rem;

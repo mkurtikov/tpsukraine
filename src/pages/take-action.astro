@@ -8,9 +8,8 @@ import '../styles/letter-builder.css';
     <header class="builder-intro">
       <p class="eyebrow">How to help</p>
       <h1 id="help-title">Your voice. <em>A request for answers.</em></h1>
-      <p class="lead">Ask Congress to help get clear, written answers about Ukraine TPS. Choose a senator or your U.S. representative, add your details, and review your letter. Then send it through their official contact form or by post.</p>
-      <p>This first version is for <strong>Texas residents</strong>. You can write whether or not TPS affects you personally.</p>
-      <p class="legal-note">This site provides general information and advocacy templates, not legal advice. It is not a substitute for advice from an attorney about your individual situation.</p>
+      <p class="lead">Ask Congress to help get clear, written answers about Ukraine TPS. Choose a senator or your U.S. representative, add your details, and review your letter. Then send it through their official contact form or by post. You don’t have to contact everyone, but writing to both of your senators and your U.S. representative can help make a greater impact. Prepare a separate letter for each recipient.</p>
+      <p>You can write whether or not TPS affects you personally.</p>
     </header>
     <noscript><p class="builder-notice">Please enable JavaScript to fill in and copy your letter. The builder works entirely in your browser.</p></noscript>
     <div class="builder-grid" id="letter-builder">
@@ -38,6 +37,32 @@ import '../styles/letter-builder.css';
           </div>
         </fieldset>
 
+        <section class="builder-next" aria-labelledby="next-title">
+          <h2 id="next-title">What happens next</h2>
+          <p id="instructions-empty">Choose a recipient to see where to send your letter and what to do next.</p>
+          <div id="online-instructions" hidden>
+            <ol>
+              <li>Fill out the form below.</li>
+              <li>Review your letter and select <strong>Copy text</strong>.</li>
+              <li id="form-instruction">Open the recipient’s official form. Enter the contact details it requests, then paste your letter into the message field. If there is a subject field, move the first line there.</li>
+              <li id="topic-instruction"></li>
+              <li>Review the completed form and submit it yourself.</li>
+            </ol>
+            <a class="button" id="official-form" target="_blank" rel="noopener noreferrer">Open official contact form ↗</a>
+            <p class="field-help external-note">Opens an official website in a new tab. Nothing you enter here is sent with the link.</p>
+          </div>
+          <div id="postal-instructions" hidden>
+            <ol>
+              <li>Fill out the form below.</li>
+              <li>Add your return address, review the letter, and select <strong>Copy text</strong>.</li>
+              <li>Paste it into a document, print it, and sign above your name.</li>
+              <li id="envelope-instruction">Address an envelope to the office below. Add your return address and postage, then mail it.</li>
+            </ol>
+            <address id="mailing-address"></address>
+            <a id="office-source" target="_blank" rel="noopener noreferrer">Check the address on the official website ↗</a>
+          </div>
+        </section>
+
         <fieldset class="builder-section">
           <legend>Your details</legend>
           <p class="field-help">Use the name and address you want to appear in your letter.</p>
@@ -63,7 +88,6 @@ import '../styles/letter-builder.css';
             <span>I am a U.S. citizen.</span>
           </label>
           <p class="field-help" id="citizenship-help">Uncheck this box if you are not a U.S. citizen. Your letter will say “I live in…” instead.</p>
-          <p class="privacy-note" id="privacy-note"><strong>We don’t collect or store the details you enter in this letter builder.</strong> They are used only to prepare your letter on this page. We do not send your letter; you choose where to copy and submit it.</p>
         </fieldset>
 
         <fieldset class="builder-section">
@@ -72,7 +96,7 @@ import '../styles/letter-builder.css';
             <input id="support-extension" type="checkbox" checked aria-describedby="extension-help" />
             <span>I support an 18-month extension of TPS for Ukraine.</span>
           </label>
-          <p class="field-help" id="extension-help">This is optional and selected by default. Uncheck the box to remove the paragraph supporting an extension and request information and official clarification only.</p>
+          <p class="field-help" id="extension-help">This is optional. Uncheck the box to remove the paragraph supporting an extension and request information and official clarification only.</p>
         </fieldset>
 
         <fieldset class="builder-section">
@@ -88,6 +112,7 @@ import '../styles/letter-builder.css';
             <span class="field-help" id="street-help">Included as your return address in the postal letter.</span>
           </div>
         </fieldset>
+        <p class="privacy-note" id="privacy-note"><strong>We don’t collect or store the details you enter in this letter builder.</strong> They are used only to prepare your letter on this page. We do not send your letter; you choose where to copy and submit it.</p>
       </div>
 
       <section class="letter-preview" aria-labelledby="preview-title">
@@ -100,29 +125,6 @@ import '../styles/letter-builder.css';
         <p class="field-help preview-note" id="preview-note">This preview cannot be edited directly. To change the wording, copy the letter into the official contact form or a document and edit it there. Review it before sending; this page does not send your letter.</p>
       </section>
 
-      <section class="builder-next" aria-labelledby="next-title">
-        <h2 id="next-title">What happens next</h2>
-        <p id="instructions-empty">Choose a recipient to see where to send your letter and what to do next.</p>
-        <div id="online-instructions" hidden>
-          <ol>
-            <li>Review your letter and select <strong>Copy text</strong>.</li>
-            <li id="form-instruction">Open the recipient’s official form. Enter the contact details it requests, then paste your letter into the message field. If there is a subject field, move the first line there.</li>
-            <li id="topic-instruction"></li>
-            <li>Review the completed form and submit it yourself.</li>
-          </ol>
-          <a class="button" id="official-form" target="_blank" rel="noopener noreferrer">Open official contact form ↗</a>
-          <p class="field-help external-note">Opens an official website in a new tab. Nothing you enter here is sent with the link.</p>
-        </div>
-        <div id="postal-instructions" hidden>
-          <ol>
-            <li>Add your return address, review the letter, and select <strong>Copy text</strong>.</li>
-            <li>Paste it into a document, print it, and sign above your name.</li>
-            <li id="envelope-instruction">Address an envelope to the office below. Add your return address and postage, then mail it.</li>
-          </ol>
-          <address id="mailing-address"></address>
-          <a id="office-source" target="_blank" rel="noopener noreferrer">Check the address on the official website ↗</a>
-        </div>
-      </section>
     </div>
   </section>
 </Layout>
