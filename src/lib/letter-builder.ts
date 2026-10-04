@@ -1,56 +1,44 @@
 import senatorTemplate from '../templates/letters/senator.md?raw';
 import representativeTemplate from '../templates/letters/representative.md?raw';
+import directory from '../data/senators.json';
+import { states } from './states';
+import { representativeById } from './representatives';
 
-export const recipients = {
-  cornyn: {
-    kind: 'senator', name: 'John Cornyn', lastName: 'Cornyn', state: 'Texas',
-    letterIntroduction: 'As my senator and Chair of the Senate Judiciary Subcommittee on Border Security and Immigration, please seek urgent answers from DHS and USCIS about Ukraine Temporary Protected Status (TPS) after October 19, 2026.',
-    inquiryIntroduction: 'Please use your oversight role to obtain a documented response to these questions:',
-    context: 'Senator Cornyn represents Texas. This letter asks his office to obtain documented answers from DHS and USCIS.',
-    form: 'https://www.cornyn.senate.gov/share-opinion/',
-    topic: 'Choose an immigration-related topic and request a response if the form offers that option.',
-    address: 'The Honorable John Cornyn\n517 Hart Senate Office Building\nWashington, DC 20510',
-    office: 'https://www.cornyn.senate.gov/contact-john-cornyn/',
-  },
-  cruz: {
-    kind: 'senator', name: 'Ted Cruz', lastName: 'Cruz', state: 'Texas',
-    letterIntroduction: 'I ask you, as my senator and a member of the Senate Judiciary Subcommittee on Border Security and Immigration, to seek urgent answers about Ukraine Temporary Protected Status (TPS) after October 19, 2026.',
-    inquiryIntroduction: 'Please request a written response from DHS and USCIS to these questions:',
-    context: 'Senator Cruz represents Texas. This letter asks his office to obtain documented answers from DHS and USCIS.',
-    form: 'https://www.cruz.senate.gov/contact/write-ted',
-    topic: 'Choose Border/Immigration, or the closest immigration-related topic, and request a response when offered.',
-    address: 'The Honorable Ted Cruz\n167 Russell Senate Office Building\nWashington, DC 20510',
-    office: 'https://www.cruz.senate.gov/contact/office-locations',
-  },
-  duckworth: {
-    kind: 'senator', name: 'Tammy Duckworth', lastName: 'Duckworth', state: 'Illinois',
-    letterIntroduction: 'Your office led the September 22 bipartisan letter supporting an extension and redesignation of Temporary Protected Status (TPS) for Ukraine. I ask your office to follow up with specific questions about any DHS determination and practical guidance after October 19, 2026.',
-    inquiryIntroduction: 'Please supplement that initiative by requesting written answers from DHS and USCIS:',
-    context: 'Senator Duckworth represents Illinois. This letter asks her office to follow up on its Ukraine TPS initiative; it does not describe you as an Illinois constituent. Use your actual Texas address and follow the office’s contact requirements.',
-    contextLink: {
-      text: 'Ukraine TPS initiative',
-      href: 'https://www.duckworth.senate.gov/news/press-releases/duckworth-leads-bipartisan-group-of-senators-in-demanding-the-trump-administration-to-extend-and-redesignate-tps-for-ukrainians',
-    },
-    form: 'https://www.duckworth.senate.gov/connect/email-tammy',
-    topic: 'Choose “Share your opinion on legislation” and an immigration-related topic. Use your actual state and address; follow any residency instructions shown by the office.',
-    address: 'The Honorable Tammy Duckworth\n524 Hart Senate Office Building\nWashington, DC 20510',
-    office: 'https://www.duckworth.senate.gov/connect/email-tammy',
-  },
-  representative: {
-    kind: 'representative', name: 'My U.S. Representative', state: 'Texas',
-    context: 'Use House.gov to find the representative for your home address, then enter their last name below. This letter asks your district’s representative to request answers from DHS and USCIS.',
-    form: 'https://www.house.gov/representatives/find-your-representative',
-    topic: 'Choose an immigration-related topic and request a response if the form offers that option.',
-    // The user finds their member’s office address on the official website.
-    address: '',
-    office: 'https://www.house.gov/representatives/find-your-representative',
-  },
-} as const;
+export const senators = directory.senators;
+export const directoryUpdated = directory.retrieved;
+export type Senator = (typeof senators)[number];
+export const senatorsForState = (state: string) => senators.filter(person => person.state === state);
+export const representativeRecipient = 'representative';
+export const representativeFinder = 'https://www.house.gov/representatives/find-your-representative';
 
-export type RecipientId = keyof typeof recipients;
+export function nextRecipientForState(state: string, previouslySent: ReadonlySet<string>, representativeId = ''): string {
+  if (!states[state]) return '';
+  const representative = representativeById(representativeId, state);
+  const choices = [
+    ...senatorsForState(state).map(person => ({ id: person.id, historyKey: person.id })),
+    // My Representative remains an unsent option until a specific member is identified and marked.
+    { id: representativeRecipient, historyKey: representative ? `representative:${representative.id}` : '' },
+  ];
+  const remaining = choices.filter(choice => !choice.historyKey || !previouslySent.has(choice.historyKey));
+  return remaining.length === 1 ? remaining[0].id : '';
+}
+
+export function contactFor(person: Senator) {
+  const overrides: Record<string, string> = {
+    C001056: 'https://www.cornyn.senate.gov/share-opinion/',
+    C001098: 'https://www.cruz.senate.gov/contact/write-ted',
+    D000622: 'https://www.duckworth.senate.gov/connect/email-tammy',
+  };
+  const url = overrides[person.id] ?? person.contact;
+  const isHomepage = new URL(url).pathname.replace(/\//g, '') === '' && !new URL(url).search;
+  return { url, isHomepage };
+}
+
+export const duckworthInitiative = 'https://www.duckworth.senate.gov/news/press-releases/duckworth-leads-bipartisan-group-of-senators-in-demanding-the-trump-administration-to-extend-and-redesignate-tps-for-ukrainians';
+
 export interface LetterDetails {
-  recipient: RecipientId;
-  representativeName: string;
+  recipient: string;
+  state: string;
   fullName: string;
   city: string;
   zip: string;
@@ -58,38 +46,49 @@ export interface LetterDetails {
   isUsCitizen: boolean;
   supportExtension: boolean;
   delivery: 'online' | 'post';
+  representativeId?: string;
+  representativeName?: string;
+  representativeAddress?: string;
 }
-
 const singleLine = (value: string) => value.replace(/\s+/g, ' ').trim();
 const septemberNotice = 'https://content.govdelivery.com/accounts/USDHSCISEVERIFY/bulletins/42855b0';
 
 export function buildLetter(details: LetterDetails): string {
-  const person = recipients[details.recipient];
+  const person = senators.find(person => person.id === details.recipient && person.state === details.state);
+  const isRepresentative = details.recipient === representativeRecipient;
+  if (!states[details.state] || (!person && !isRepresentative)) return '';
+  const representative = representativeById(details.representativeId ?? '', details.state);
+  const representativeName = representative?.lastName
+    || singleLine(details.representativeId ? '' : details.representativeName ?? '') || '[Representative last name]';
   const name = singleLine(details.fullName) || '[Full name]';
   const city = singleLine(details.city) || '[City]';
   const zip = singleLine(details.zip) || '[ZIP code]';
   const street = singleLine(details.street) || '[Street address]';
-  const location = `${city}, Texas ${zip}`;
-  const template = person.kind === 'senator'
-    ? senatorTemplate
-      .replaceAll('[Senator last name]', () => person.lastName)
-      .replaceAll('[Senator introduction]', () => person.letterIntroduction)
-      .replaceAll('[Inquiry introduction]', () => person.inquiryIntroduction)
-    : representativeTemplate;
-  let body = template
+  const state = states[details.state];
+  const location = `${city}, ${state} ${zip}`;
+  const introduction = person?.id === 'D000622'
+    ? 'Your office led the September 22 bipartisan letter supporting an extension and redesignation of Temporary Protected Status (TPS) for Ukraine. I ask your office to follow up with specific questions about any DHS determination and practical guidance after October 19, 2026.'
+    : 'I ask you, as my senator, to seek urgent answers from DHS and USCIS about Ukraine Temporary Protected Status (TPS) after October 19, 2026.';
+  let body = (isRepresentative ? representativeTemplate : senatorTemplate)
+    .replaceAll('[Last name]', () => representativeName)
+    .replaceAll('[Senator last name]', () => person!.lastName)
+    .replaceAll('[Senator introduction]', () => introduction)
+    .replaceAll('[Inquiry introduction]', 'Please use your oversight role to obtain a documented response to these questions:')
     .replace(/\*\*/g, '')
     .replace(/I am a U\.S\. citizen residing in/, details.isUsCitizen ? 'I am a U.S. citizen residing in' : 'I live in')
-    .replace(/\[As a matter of public policy,([\s\S]*?)\]/, (paragraph) => details.supportExtension ? paragraph.slice(1, -1) : '')
+    .replace(/\[As a matter of public policy,([\s\S]*?)\]/, paragraph => details.supportExtension ? paragraph.slice(1, -1) : '')
     .split('Sincerely,')[0]
     .replaceAll('[City]', () => city)
+    .replaceAll('[State]', () => state)
     .replaceAll('[ZIP code]', () => zip)
-    .replaceAll('[Last name]', () => singleLine(details.representativeName) || '[Representative’s last name]')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
   body += `\n\nReference: USCIS E-Verify bulletin, September 3, 2026\n${septemberNotice}`;
   if (details.delivery === 'post') {
-    const recipientAddress = person.address ? `${person.address}\n\n` : '';
-    body = `${name}\n${street}\n${location}\n\n${recipientAddress}${body}\n\nSincerely,\n\n${name}`;
+    const representativeAddress = (details.representativeId ? '' : details.representativeAddress ?? '').split(/\r?\n/).map(singleLine).filter(Boolean).join('\n')
+      || '[Representative office mailing address]';
+    const officeAddress = isRepresentative ? representative?.address || `Representative ${representativeName}\n${representativeAddress}` : person!.address;
+    body = `${name}\n${street}\n${location}\n\n${officeAddress}\n\n${body}\n\nSincerely,\n\n\n${name}`;
   } else {
     body += `\n\nSincerely,\n${name}\n${location}`;
   }

@@ -1,0 +1,16 @@
+---
+const { prefix = '' } = Astro.props;
+---
+<div class="builder-field representative-search" data-representative-search>
+  <label for={`${prefix}representative-name`}>Search for your representative</label>
+  <input id={`${prefix}representative-name`} data-detail-field={prefix ? 'representative-name' : undefined}
+    type="text" role="combobox" aria-autocomplete="list" aria-expanded="false"
+    aria-controls={`${prefix}representative-results`} autocomplete="off" spellcheck="false"
+    maxlength="120" placeholder="Type a first or last name"
+    aria-describedby={`${prefix}representative-name-help ${prefix}representative-name-warning ${prefix}representative-selection`} />
+  <ul id={`${prefix}representative-results`} class="representative-results" role="listbox" aria-label="Matching representatives" hidden></ul>
+  <p class="field-help representative-search-status" id={`${prefix}representative-search-status`} role="status" aria-live="polite"></p>
+  <p class="field-help" id={`${prefix}representative-name-help`}>Choose the person you found on House.gov. Results are limited to your selected state; this search does not identify your district from your ZIP code.</p>
+  <p class="field-help representative-selection" id={`${prefix}representative-selection`} hidden></p>
+  <p class="field-warning" id={`${prefix}representative-name-warning`} role="status" hidden></p>
+</div>

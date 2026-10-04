@@ -2,7 +2,7 @@
 
 Dear Senator [Senator last name],
 
-I am a U.S. citizen residing in [City], Texas [ZIP code]. [Senator introduction]
+I am a U.S. citizen residing in [City], [State] [ZIP code]. [Senator introduction]
 
 [As a matter of public policy, I support an 18-month extension of TPS for Ukraine and clear guidance that helps eligible beneficiaries maintain authorized employment while protection continues. People displaced by the war need safety and reliable information about their ability to remain and work in the United States.]
 
@@ -21,5 +21,5 @@ These questions seek documented facts and the agency’s legal position; they do
 Sincerely,\br
 [Full name]\br
 [Street address]\br
-[City], Texas [ZIP code]\br
+[City], [State] [ZIP code]\br
 [Email address]

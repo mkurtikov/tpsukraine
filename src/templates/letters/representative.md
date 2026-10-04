@@ -2,7 +2,7 @@
 
 Dear Representative [Last name],
 
-I am a U.S. citizen residing in [City], Texas [ZIP code] in your congressional district. I ask your office to seek urgent answers from DHS and USCIS about Ukraine Temporary Protected Status (TPS) after October 19, 2026.
+I am a U.S. citizen residing in [City], [State] [ZIP code] in your congressional district. I ask your office to seek urgent answers from DHS and USCIS about Ukraine Temporary Protected Status (TPS) after October 19, 2026.
 
 [As a matter of public policy, I support an 18-month extension of TPS for Ukraine and clear guidance that helps eligible beneficiaries maintain authorized employment while protection continues. People displaced by the war need safety and reliable information about their ability to remain and work in the United States.]
 
@@ -21,5 +21,5 @@ These questions seek documented facts and the agency’s legal position; they do
 Sincerely,\br
 [Full name]\br
 [Street address]\br
-[City], Texas [ZIP code]\br
+[City], [State] [ZIP code]\br
 [Email address]

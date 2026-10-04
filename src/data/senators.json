@@ -1,0 +1,906 @@
+{
+  "source": "https://www.senate.gov/general/contact_information/senators_cfm.xml",
+  "retrieved": "2026-10-04",
+  "senators": [
+    {
+      "id": "M001153",
+      "name": "Lisa Murkowski",
+      "lastName": "Murkowski",
+      "state": "AK",
+      "website": "https://www.murkowski.senate.gov/",
+      "contact": "https://www.murkowski.senate.gov/public/index.cfm/contact",
+      "address": "The Honorable Lisa Murkowski\n522 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001198",
+      "name": "Dan Sullivan",
+      "lastName": "Sullivan",
+      "state": "AK",
+      "website": "https://www.sullivan.senate.gov",
+      "contact": "https://www.sullivan.senate.gov/contact/email",
+      "address": "The Honorable Dan Sullivan\n706 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001319",
+      "name": "Katie Boyd Britt",
+      "lastName": "Britt",
+      "state": "AL",
+      "website": "https://www.britt.senate.gov/",
+      "contact": "https://www.britt.senate.gov/contact/",
+      "address": "The Honorable Katie Boyd Britt\n416 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "T000278",
+      "name": "Tommy Tuberville",
+      "lastName": "Tuberville",
+      "state": "AL",
+      "website": "https://www.tuberville.senate.gov",
+      "contact": "https://www.tuberville.senate.gov/contact/contact-form/",
+      "address": "The Honorable Tommy Tuberville\n455 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001236",
+      "name": "John Boozman",
+      "lastName": "Boozman",
+      "state": "AR",
+      "website": "https://www.boozman.senate.gov/",
+      "contact": "https://www.boozman.senate.gov/public/index.cfm/contact",
+      "address": "The Honorable John Boozman\n555 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001095",
+      "name": "Tom Cotton",
+      "lastName": "Cotton",
+      "state": "AR",
+      "website": "https://www.cotton.senate.gov",
+      "contact": "https://www.cotton.senate.gov/contact/contact-tom",
+      "address": "The Honorable Tom Cotton\n326 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "G000574",
+      "name": "Ruben Gallego",
+      "lastName": "Gallego",
+      "state": "AZ",
+      "website": "https://www.gallego.senate.gov/",
+      "contact": "https://www.gallego.senate.gov/",
+      "address": "The Honorable Ruben Gallego\n302 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "K000377",
+      "name": "Mark Kelly",
+      "lastName": "Kelly",
+      "state": "AZ",
+      "website": "https://www.kelly.senate.gov",
+      "contact": "https://www.kelly.senate.gov/contact/contact-form/",
+      "address": "The Honorable Mark Kelly\n516 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "P000145",
+      "name": "Alex Padilla",
+      "lastName": "Padilla",
+      "state": "CA",
+      "website": "https://www.padilla.senate.gov",
+      "contact": "https://www.padilla.senate.gov/contact/",
+      "address": "The Honorable Alex Padilla\n331 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001150",
+      "name": "Adam B. Schiff",
+      "lastName": "Schiff",
+      "state": "CA",
+      "website": "https://www.schiff.senate.gov",
+      "contact": "https://www.schiff.senate.gov",
+      "address": "The Honorable Adam B. Schiff\n112 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001267",
+      "name": "Michael F. Bennet",
+      "lastName": "Bennet",
+      "state": "CO",
+      "website": "https://www.bennet.senate.gov",
+      "contact": "https://www.bennet.senate.gov/public/index.cfm/contact",
+      "address": "The Honorable Michael F. Bennet\n261 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "H000273",
+      "name": "John W. Hickenlooper",
+      "lastName": "Hickenlooper",
+      "state": "CO",
+      "website": "https://www.hickenlooper.senate.gov",
+      "contact": "https://www.hickenlooper.senate.gov/contact/",
+      "address": "The Honorable John W. Hickenlooper\n316 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001277",
+      "name": "Richard Blumenthal",
+      "lastName": "Blumenthal",
+      "state": "CT",
+      "website": "https://www.blumenthal.senate.gov",
+      "contact": "https://www.blumenthal.senate.gov/contact/",
+      "address": "The Honorable Richard Blumenthal\n503 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "M001169",
+      "name": "Christopher Murphy",
+      "lastName": "Murphy",
+      "state": "CT",
+      "website": "https://www.murphy.senate.gov/",
+      "contact": "https://www.murphy.senate.gov/contact",
+      "address": "The Honorable Christopher Murphy\n136 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001303",
+      "name": "Lisa Blunt Rochester",
+      "lastName": "Blunt Rochester",
+      "state": "DE",
+      "website": "https://www.bluntrochester.senate.gov/",
+      "contact": "https://www.bluntrochester.senate.gov/",
+      "address": "The Honorable Lisa Blunt Rochester\n513 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001088",
+      "name": "Christopher A. Coons",
+      "lastName": "Coons",
+      "state": "DE",
+      "website": "https://www.coons.senate.gov/",
+      "contact": "https://www.coons.senate.gov/contact",
+      "address": "The Honorable Christopher A. Coons\n218 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "M001244",
+      "name": "Ashley Moody",
+      "lastName": "Moody",
+      "state": "FL",
+      "website": "https://www.moody.senate.gov",
+      "contact": "https://www.moody.senate.gov",
+      "address": "The Honorable Ashley Moody\n387 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001217",
+      "name": "Rick Scott",
+      "lastName": "Scott",
+      "state": "FL",
+      "website": "https://www.rickscott.senate.gov/",
+      "contact": "https://www.rickscott.senate.gov/contact/contact",
+      "address": "The Honorable Rick Scott\n110 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "O000174",
+      "name": "Jon Ossoff",
+      "lastName": "Ossoff",
+      "state": "GA",
+      "website": "https://www.ossoff.senate.gov",
+      "contact": "https://www.ossoff.senate.gov/contact-us/",
+      "address": "The Honorable Jon Ossoff\n317 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "W000790",
+      "name": "Raphael G. Warnock",
+      "lastName": "Warnock",
+      "state": "GA",
+      "website": "https://www.warnock.senate.gov",
+      "contact": "https://www.warnock.senate.gov/contact/",
+      "address": "The Honorable Raphael G. Warnock\n717 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "H001042",
+      "name": "Mazie K. Hirono",
+      "lastName": "Hirono",
+      "state": "HI",
+      "website": "https://www.hirono.senate.gov/",
+      "contact": "https://www.hirono.senate.gov/contact",
+      "address": "The Honorable Mazie K. Hirono\n109 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001194",
+      "name": "Brian Schatz",
+      "lastName": "Schatz",
+      "state": "HI",
+      "website": "https://www.schatz.senate.gov",
+      "contact": "https://www.schatz.senate.gov/contact",
+      "address": "The Honorable Brian Schatz\n722 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "E000295",
+      "name": "Joni Ernst",
+      "lastName": "Ernst",
+      "state": "IA",
+      "website": "https://www.ernst.senate.gov",
+      "contact": "https://www.ernst.senate.gov/public/index.cfm/contact",
+      "address": "The Honorable Joni Ernst\n260 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "G000386",
+      "name": "Chuck Grassley",
+      "lastName": "Grassley",
+      "state": "IA",
+      "website": "https://www.grassley.senate.gov",
+      "contact": "https://www.grassley.senate.gov/contact",
+      "address": "The Honorable Chuck Grassley\n135 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C000880",
+      "name": "Mike Crapo",
+      "lastName": "Crapo",
+      "state": "ID",
+      "website": "https://www.crapo.senate.gov",
+      "contact": "https://www.crapo.senate.gov/contact",
+      "address": "The Honorable Mike Crapo\n239 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "R000584",
+      "name": "James E. Risch",
+      "lastName": "Risch",
+      "state": "ID",
+      "website": "https://www.risch.senate.gov",
+      "contact": "https://www.risch.senate.gov/public/index.cfm?p=Email",
+      "address": "The Honorable James E. Risch\n483 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "D000622",
+      "name": "Tammy Duckworth",
+      "lastName": "Duckworth",
+      "state": "IL",
+      "website": "https://www.duckworth.senate.gov",
+      "contact": "https://www.duckworth.senate.gov/content/contact-senator",
+      "address": "The Honorable Tammy Duckworth\n524 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "D000563",
+      "name": "Richard J. Durbin",
+      "lastName": "Durbin",
+      "state": "IL",
+      "website": "https://www.durbin.senate.gov",
+      "contact": "https://www.durbin.senate.gov/contact/",
+      "address": "The Honorable Richard J. Durbin\n711 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001299",
+      "name": "Jim Banks",
+      "lastName": "Banks",
+      "state": "IN",
+      "website": "https://www.banks.senate.gov/",
+      "contact": "https://www.banks.senate.gov/",
+      "address": "The Honorable Jim Banks\n303 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "Y000064",
+      "name": "Todd Young",
+      "lastName": "Young",
+      "state": "IN",
+      "website": "https://www.young.senate.gov",
+      "contact": "https://www.young.senate.gov/contact",
+      "address": "The Honorable Todd Young\n185 Dirksen Senate Office Building Washington DC\n      20510"
+    },
+    {
+      "id": "M001198",
+      "name": "Roger Marshall",
+      "lastName": "Marshall",
+      "state": "KS",
+      "website": "https://www.marshall.senate.gov",
+      "contact": "https://www.marshall.senate.gov/contact/",
+      "address": "The Honorable Roger Marshall\n479A Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "M000934",
+      "name": "Jerry Moran",
+      "lastName": "Moran",
+      "state": "KS",
+      "website": "https://www.moran.senate.gov",
+      "contact": "https://www.moran.senate.gov/public/index.cfm/e-mail-jerry",
+      "address": "The Honorable Jerry Moran\n521 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "M000355",
+      "name": "Mitch McConnell",
+      "lastName": "McConnell",
+      "state": "KY",
+      "website": "https://www.mcconnell.senate.gov/",
+      "contact": "https://www.mcconnell.senate.gov/public/index.cfm?p=contact",
+      "address": "The Honorable Mitch McConnell\n317 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "P000603",
+      "name": "Rand Paul",
+      "lastName": "Paul",
+      "state": "KY",
+      "website": "https://www.paul.senate.gov",
+      "contact": "https://www.paul.senate.gov/connect/email-rand",
+      "address": "The Honorable Rand Paul\n295 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001075",
+      "name": "Bill Cassidy",
+      "lastName": "Cassidy",
+      "state": "LA",
+      "website": "https://www.cassidy.senate.gov",
+      "contact": "https://www.cassidy.senate.gov/contact",
+      "address": "The Honorable Bill Cassidy\n455 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "K000393",
+      "name": "John Kennedy",
+      "lastName": "Kennedy",
+      "state": "LA",
+      "website": "https://www.kennedy.senate.gov",
+      "contact": "https://www.kennedy.senate.gov/public/email-me",
+      "address": "The Honorable John Kennedy\n437 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "M000133",
+      "name": "Edward J. Markey",
+      "lastName": "Markey",
+      "state": "MA",
+      "website": "https://www.markey.senate.gov",
+      "contact": "https://www.markey.senate.gov/contact",
+      "address": "The Honorable Edward J. Markey\n255 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "W000817",
+      "name": "Elizabeth Warren",
+      "lastName": "Warren",
+      "state": "MA",
+      "website": "https://www.warren.senate.gov",
+      "contact": "https://www.warren.senate.gov/?p=email_senator",
+      "address": "The Honorable Elizabeth Warren\n311 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "A000382",
+      "name": "Angela D. Alsobrooks",
+      "lastName": "Alsobrooks",
+      "state": "MD",
+      "website": "https://alsobrooks.senate.gov/",
+      "contact": "https://alsobrooks.senate.gov/",
+      "address": "The Honorable Angela D. Alsobrooks\n374 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "V000128",
+      "name": "Chris Van Hollen",
+      "lastName": "Van Hollen",
+      "state": "MD",
+      "website": "https://www.vanhollen.senate.gov",
+      "contact": "https://www.vanhollen.senate.gov/contact/email",
+      "address": "The Honorable Chris Van Hollen\n730 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001035",
+      "name": "Susan M. Collins",
+      "lastName": "Collins",
+      "state": "ME",
+      "website": "https://www.collins.senate.gov",
+      "contact": "https://www.collins.senate.gov/contact",
+      "address": "The Honorable Susan M. Collins\n413 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "K000383",
+      "name": "Angus S., Jr. King",
+      "lastName": "King",
+      "state": "ME",
+      "website": "https://www.king.senate.gov/",
+      "contact": "https://www.king.senate.gov/contact",
+      "address": "The Honorable Angus S., Jr. King\n133 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "P000595",
+      "name": "Gary C. Peters",
+      "lastName": "Peters",
+      "state": "MI",
+      "website": "https://www.peters.senate.gov",
+      "contact": "https://www.peters.senate.gov/contact/email-gary",
+      "address": "The Honorable Gary C. Peters\n724 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001208",
+      "name": "Elissa Slotkin",
+      "lastName": "Slotkin",
+      "state": "MI",
+      "website": "https://www.slotkin.senate.gov/",
+      "contact": "https://www.slotkin.senate.gov/",
+      "address": "The Honorable Elissa Slotkin\n291 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "K000367",
+      "name": "Amy Klobuchar",
+      "lastName": "Klobuchar",
+      "state": "MN",
+      "website": "https://www.klobuchar.senate.gov/",
+      "contact": "https://www.klobuchar.senate.gov/public/index.cfm/contact",
+      "address": "The Honorable Amy Klobuchar\n425 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001203",
+      "name": "Tina Smith",
+      "lastName": "Smith",
+      "state": "MN",
+      "website": "https://www.smith.senate.gov",
+      "contact": "https://www.smith.senate.gov/share-your-opinion/",
+      "address": "The Honorable Tina Smith\n720 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "H001089",
+      "name": "Josh Hawley",
+      "lastName": "Hawley",
+      "state": "MO",
+      "website": "https://www.hawley.senate.gov",
+      "contact": "https://www.hawley.senate.gov/contact-senator-hawley",
+      "address": "The Honorable Josh Hawley\n381 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001227",
+      "name": "Eric Schmitt",
+      "lastName": "Schmitt",
+      "state": "MO",
+      "website": "https://www.schmitt.senate.gov/",
+      "contact": "https://www.schmitt.senate.gov/contact/",
+      "address": "The Honorable Eric Schmitt\n404 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "H001079",
+      "name": "Cindy Hyde-Smith",
+      "lastName": "Hyde-Smith",
+      "state": "MS",
+      "website": "https://www.hydesmith.senate.gov/",
+      "contact": "https://www.hydesmith.senate.gov/contact-senator",
+      "address": "The Honorable Cindy Hyde-Smith\n528 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "W000437",
+      "name": "Roger F. Wicker",
+      "lastName": "Wicker",
+      "state": "MS",
+      "website": "https://www.wicker.senate.gov",
+      "contact": "https://www.wicker.senate.gov/public/index.cfm/contact",
+      "address": "The Honorable Roger F. Wicker\n425 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "D000618",
+      "name": "Steve Daines",
+      "lastName": "Daines",
+      "state": "MT",
+      "website": "https://www.daines.senate.gov",
+      "contact": "https://www.daines.senate.gov/connect/email-steve",
+      "address": "The Honorable Steve Daines\n320 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001232",
+      "name": "Tim Sheehy",
+      "lastName": "Sheehy",
+      "state": "MT",
+      "website": "https://www.sheehy.senate.gov/",
+      "contact": "https://www.sheehy.senate.gov/",
+      "address": "The Honorable Tim Sheehy\n124 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001305",
+      "name": "Ted Budd",
+      "lastName": "Budd",
+      "state": "NC",
+      "website": "https://www.budd.senate.gov/",
+      "contact": "https://www.budd.senate.gov/contact/",
+      "address": "The Honorable Ted Budd\n354 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "T000476",
+      "name": "Thom Tillis",
+      "lastName": "Tillis",
+      "state": "NC",
+      "website": "https://www.tillis.senate.gov",
+      "contact": "https://www.tillis.senate.gov/public/index.cfm/email-me",
+      "address": "The Honorable Thom Tillis\n113 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001096",
+      "name": "Kevin Cramer",
+      "lastName": "Cramer",
+      "state": "ND",
+      "website": "https://www.cramer.senate.gov",
+      "contact": "https://www.cramer.senate.gov/contact/contact-kevin",
+      "address": "The Honorable Kevin Cramer\n313 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "H001061",
+      "name": "John Hoeven",
+      "lastName": "Hoeven",
+      "state": "ND",
+      "website": "https://www.hoeven.senate.gov",
+      "contact": "https://www.hoeven.senate.gov/contact/contact-the-senator",
+      "address": "The Honorable John Hoeven\n338 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "F000463",
+      "name": "Deb Fischer",
+      "lastName": "Fischer",
+      "state": "NE",
+      "website": "https://www.fischer.senate.gov",
+      "contact": "https://www.fischer.senate.gov/public/index.cfm/contact",
+      "address": "The Honorable Deb Fischer\n448 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "R000618",
+      "name": "Pete Ricketts",
+      "lastName": "Ricketts",
+      "state": "NE",
+      "website": "https://www.ricketts.senate.gov",
+      "contact": "https://www.ricketts.senate.gov/contact/",
+      "address": "The Honorable Pete Ricketts\n139 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "H001076",
+      "name": "Margaret Wood Hassan",
+      "lastName": "Hassan",
+      "state": "NH",
+      "website": "https://www.hassan.senate.gov",
+      "contact": "https://www.hassan.senate.gov/content/contact-senator",
+      "address": "The Honorable Margaret Wood Hassan\n324 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001181",
+      "name": "Jeanne Shaheen",
+      "lastName": "Shaheen",
+      "state": "NH",
+      "website": "https://www.shaheen.senate.gov",
+      "contact": "https://www.shaheen.senate.gov/contact/contact-jeanne",
+      "address": "The Honorable Jeanne Shaheen\n506 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001288",
+      "name": "Cory A. Booker",
+      "lastName": "Booker",
+      "state": "NJ",
+      "website": "https://www.booker.senate.gov",
+      "contact": "https://www.booker.senate.gov/?p=contact",
+      "address": "The Honorable Cory A. Booker\n306 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "K000394",
+      "name": "Andy Kim",
+      "lastName": "Kim",
+      "state": "NJ",
+      "website": "https://www.kim.senate.gov/",
+      "contact": "https://www.kim.senate.gov/",
+      "address": "The Honorable Andy Kim\n520 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "H001046",
+      "name": "Martin Heinrich",
+      "lastName": "Heinrich",
+      "state": "NM",
+      "website": "https://www.heinrich.senate.gov/",
+      "contact": "https://www.heinrich.senate.gov/contact",
+      "address": "The Honorable Martin Heinrich\n709 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "L000570",
+      "name": "Ben Ray Luj\u00e1n",
+      "lastName": "Luj\u00e1n",
+      "state": "NM",
+      "website": "https://www.lujan.senate.gov",
+      "contact": "https://www.lujan.senate.gov/contact/",
+      "address": "The Honorable Ben Ray Luj\u00e1n\n498 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001113",
+      "name": "Catherine Cortez Masto",
+      "lastName": "Cortez Masto",
+      "state": "NV",
+      "website": "https://www.cortezmasto.senate.gov",
+      "contact": "https://www.cortezmasto.senate.gov/contact",
+      "address": "The Honorable Catherine Cortez Masto\n309 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "R000608",
+      "name": "Jacky Rosen",
+      "lastName": "Rosen",
+      "state": "NV",
+      "website": "https://www.rosen.senate.gov",
+      "contact": "https://www.rosen.senate.gov/contact_jacky",
+      "address": "The Honorable Jacky Rosen\n713 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "G000555",
+      "name": "Kirsten E. Gillibrand",
+      "lastName": "Gillibrand",
+      "state": "NY",
+      "website": "https://www.gillibrand.senate.gov",
+      "contact": "https://www.gillibrand.senate.gov/contact/email-me",
+      "address": "The Honorable Kirsten E. Gillibrand\n478 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S000148",
+      "name": "Charles E. Schumer",
+      "lastName": "Schumer",
+      "state": "NY",
+      "website": "https://www.schumer.senate.gov/",
+      "contact": "https://www.schumer.senate.gov/contact/email-chuck",
+      "address": "The Honorable Charles E. Schumer\n322 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "H001104",
+      "name": "Jon Husted",
+      "lastName": "Husted",
+      "state": "OH",
+      "website": "https://www.husted.senate.gov/",
+      "contact": "https://www.husted.senate.gov",
+      "address": "The Honorable Jon Husted\n304 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "M001242",
+      "name": "Bernie Moreno",
+      "lastName": "Moreno",
+      "state": "OH",
+      "website": "https://www.moreno.senate.gov",
+      "contact": "https://www.moreno.senate.gov",
+      "address": "The Honorable Bernie Moreno\n284 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "A000383",
+      "name": "Alan Armstrong",
+      "lastName": "Armstrong",
+      "state": "OK",
+      "website": "https://www.armstrong.senate.gov/",
+      "contact": "https://www.armstrong.senate.gov/",
+      "address": "The Honorable Alan Armstrong\n330 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "L000575",
+      "name": "James Lankford",
+      "lastName": "Lankford",
+      "state": "OK",
+      "website": "https://www.lankford.senate.gov",
+      "contact": "https://www.lankford.senate.gov/contact/email",
+      "address": "The Honorable James Lankford\n731 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "M001176",
+      "name": "Jeff Merkley",
+      "lastName": "Merkley",
+      "state": "OR",
+      "website": "https://www.merkley.senate.gov",
+      "contact": "https://www.merkley.senate.gov/contact/",
+      "address": "The Honorable Jeff Merkley\n531 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "W000779",
+      "name": "Ron Wyden",
+      "lastName": "Wyden",
+      "state": "OR",
+      "website": "https://www.wyden.senate.gov/",
+      "contact": "https://www.wyden.senate.gov/contact/",
+      "address": "The Honorable Ron Wyden\n221 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "F000479",
+      "name": "John Fetterman",
+      "lastName": "Fetterman",
+      "state": "PA",
+      "website": "https://www.fetterman.senate.gov/",
+      "contact": "https://www.fetterman.senate.gov/contact/",
+      "address": "The Honorable John Fetterman\n142 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "M001243",
+      "name": "David McCormick",
+      "lastName": "McCormick",
+      "state": "PA",
+      "website": "https://mccormick.senate.gov/",
+      "contact": "https://mccormick.senate.gov/",
+      "address": "The Honorable David McCormick\n702 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "R000122",
+      "name": "Jack Reed",
+      "lastName": "Reed",
+      "state": "RI",
+      "website": "https://www.reed.senate.gov/",
+      "contact": "https://www.reed.senate.gov/contact/",
+      "address": "The Honorable Jack Reed\n728 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "W000802",
+      "name": "Sheldon Whitehouse",
+      "lastName": "Whitehouse",
+      "state": "RI",
+      "website": "https://www.whitehouse.senate.gov/",
+      "contact": "https://www.whitehouse.senate.gov/contact/email-sheldon",
+      "address": "The Honorable Sheldon Whitehouse\n530 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "G000608",
+      "name": "Darline Graham",
+      "lastName": "Graham",
+      "state": "SC",
+      "website": "https://www.dgraham.senate.gov/",
+      "contact": "https://www.dgraham.senate.gov/",
+      "address": "The Honorable Darline Graham\n211 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S001184",
+      "name": "Tim Scott",
+      "lastName": "Scott",
+      "state": "SC",
+      "website": "https://www.scott.senate.gov/",
+      "contact": "https://www.scott.senate.gov/contact/email-me",
+      "address": "The Honorable Tim Scott\n104 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "R000605",
+      "name": "Mike Rounds",
+      "lastName": "Rounds",
+      "state": "SD",
+      "website": "https://www.rounds.senate.gov",
+      "contact": "https://www.rounds.senate.gov/contact/email-mike",
+      "address": "The Honorable Mike Rounds\n716 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "T000250",
+      "name": "John Thune",
+      "lastName": "Thune",
+      "state": "SD",
+      "website": "https://www.thune.senate.gov/",
+      "contact": "https://www.thune.senate.gov/public/index.cfm/contact",
+      "address": "The Honorable John Thune\n511 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001243",
+      "name": "Marsha Blackburn",
+      "lastName": "Blackburn",
+      "state": "TN",
+      "website": "https://www.blackburn.senate.gov",
+      "contact": "https://www.blackburn.senate.gov/email-me",
+      "address": "The Honorable Marsha Blackburn\n357 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "H000601",
+      "name": "Bill Hagerty",
+      "lastName": "Hagerty",
+      "state": "TN",
+      "website": "https://www.hagerty.senate.gov",
+      "contact": "https://www.hagerty.senate.gov/email-me/",
+      "address": "The Honorable Bill Hagerty\n251 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001056",
+      "name": "John Cornyn",
+      "lastName": "Cornyn",
+      "state": "TX",
+      "website": "https://www.cornyn.senate.gov/",
+      "contact": "https://www.cornyn.senate.gov/contact",
+      "address": "The Honorable John Cornyn\n517 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001098",
+      "name": "Ted Cruz",
+      "lastName": "Cruz",
+      "state": "TX",
+      "website": "https://www.cruz.senate.gov",
+      "contact": "https://www.cruz.senate.gov/?p=form&id=16",
+      "address": "The Honorable Ted Cruz\n167 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001114",
+      "name": "John R. Curtis",
+      "lastName": "Curtis",
+      "state": "UT",
+      "website": "https://www.curtis.senate.gov/",
+      "contact": "https://www.curtis.senate.gov/",
+      "address": "The Honorable John R. Curtis\n502 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "L000577",
+      "name": "Mike Lee",
+      "lastName": "Lee",
+      "state": "UT",
+      "website": "https://www.lee.senate.gov/",
+      "contact": "https://www.lee.senate.gov/public/index.cfm/contact",
+      "address": "The Honorable Mike Lee\n363 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "K000384",
+      "name": "Tim Kaine",
+      "lastName": "Kaine",
+      "state": "VA",
+      "website": "https://www.kaine.senate.gov/",
+      "contact": "https://www.kaine.senate.gov/contact",
+      "address": "The Honorable Tim Kaine\n231 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "W000805",
+      "name": "Mark R. Warner",
+      "lastName": "Warner",
+      "state": "VA",
+      "website": "https://www.warner.senate.gov",
+      "contact": "https://www.warner.senate.gov/public/index.cfm?p=Contact",
+      "address": "The Honorable Mark R. Warner\n703 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "S000033",
+      "name": "Bernard Sanders",
+      "lastName": "Sanders",
+      "state": "VT",
+      "website": "https://www.sanders.senate.gov/",
+      "contact": "https://www.sanders.senate.gov/contact/",
+      "address": "The Honorable Bernard Sanders\n332 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "W000800",
+      "name": "Peter Welch",
+      "lastName": "Welch",
+      "state": "VT",
+      "website": "https://www.welch.senate.gov/",
+      "contact": "https://www.welch.senate.gov/email-peter/",
+      "address": "The Honorable Peter Welch\n115 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C000127",
+      "name": "Maria Cantwell",
+      "lastName": "Cantwell",
+      "state": "WA",
+      "website": "https://www.cantwell.senate.gov",
+      "contact": "https://www.cantwell.senate.gov/public/index.cfm/email-maria",
+      "address": "The Honorable Maria Cantwell\n511 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "M001111",
+      "name": "Patty Murray",
+      "lastName": "Murray",
+      "state": "WA",
+      "website": "https://www.murray.senate.gov/",
+      "contact": "https://www.murray.senate.gov/write-to-patty/",
+      "address": "The Honorable Patty Murray\n154 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001230",
+      "name": "Tammy Baldwin",
+      "lastName": "Baldwin",
+      "state": "WI",
+      "website": "https://www.baldwin.senate.gov/",
+      "contact": "https://www.baldwin.senate.gov/feedback",
+      "address": "The Honorable Tammy Baldwin\n141 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "J000293",
+      "name": "Ron Johnson",
+      "lastName": "Johnson",
+      "state": "WI",
+      "website": "https://www.ronjohnson.senate.gov/",
+      "contact": "https://www.ronjohnson.senate.gov/public/index.cfm/email-the-senator",
+      "address": "The Honorable Ron Johnson\n328 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "C001047",
+      "name": "Shelley Moore Capito",
+      "lastName": "Capito",
+      "state": "WV",
+      "website": "https://www.capito.senate.gov",
+      "contact": "https://www.capito.senate.gov/contact/contact-shelley",
+      "address": "The Honorable Shelley Moore Capito\n170 Russell Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "J000312",
+      "name": "James C. Justice",
+      "lastName": "Justice",
+      "state": "WV",
+      "website": "https://www.justice.senate.gov/",
+      "contact": "https://www.justice.senate.gov/",
+      "address": "The Honorable James C. Justice\n509 Hart Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "B001261",
+      "name": "John Barrasso",
+      "lastName": "Barrasso",
+      "state": "WY",
+      "website": "https://www.barrasso.senate.gov",
+      "contact": "https://www.barrasso.senate.gov/public/index.cfm/contact-form",
+      "address": "The Honorable John Barrasso\n307 Dirksen Senate Office Building\nWashington, DC 20510"
+    },
+    {
+      "id": "L000571",
+      "name": "Cynthia M. Lummis",
+      "lastName": "Lummis",
+      "state": "WY",
+      "website": "https://www.lummis.senate.gov",
+      "contact": "https://www.lummis.senate.gov/contact/contact-form/",
+      "address": "The Honorable Cynthia M. Lummis\n127A Russell Senate Office Building\nWashington, DC 20510"
+    }
+  ]
+}

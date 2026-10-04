@@ -20,7 +20,8 @@ const showHelpAction = page !== 'help';
   </head>
   <body class:list={{ 'has-help-action': showHelpAction }}>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header shell">
+    <header class:list={['site-header-wrap', { 'is-sticky': showHelpAction }]}>
+    <div class="site-header shell">
       <a class="brand" href="/" aria-label="Ukraine TPS Collective — home">
         <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
         <span>Ukraine TPS <span class="brand-light">Collective</span></span>
@@ -28,21 +29,14 @@ const showHelpAction = page !== 'help';
       <nav aria-label="Main navigation">
         <a href="/" aria-current={page === 'overview' ? 'page' : undefined}>Overview</a>
         <a href="/background/" aria-current={page === 'background' ? 'page' : undefined}>TPS background</a>
-        <a href="/take-action/" aria-current={page === 'help' ? 'page' : undefined}>How to help</a>
+        <a class:list={['button', 'nav-action', { 'nav-action-animated': showHelpAction }]} href="/take-action/" aria-current={page === 'help' ? 'page' : undefined}>Take action</a>
       </nav>
+    </div>
     </header>
     <main id="main"><slot /></main>
     <footer class="site-footer shell">
       <span>Source materials updated October 2, 2026</span>
       <p class="legal-note">This site provides general information and advocacy templates, not legal advice. It is not a substitute for advice from an attorney about your individual situation.</p>
     </footer>
-    {showHelpAction && (
-      <aside class="help-action" aria-label="Help request answers about Ukraine TPS">
-        <div class="shell help-action-inner">
-          <p>Help ask for clear answers about Ukraine TPS.</p>
-          <a class="button" href="/take-action/">How can I help?</a>
-        </div>
-      </aside>
-    )}
   </body>
 </html>
