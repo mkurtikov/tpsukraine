@@ -37,6 +37,7 @@
 .recipient-list { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 .recipient-card { display:flex; align-items:flex-start; gap:14px; border:2px solid var(--line); padding:24px 20px; border-radius:4px; cursor:pointer; }
 .recipient-card:has(:checked) { border-color:var(--blue); background:#f1f6ff; }
+.recipient-card:has([aria-invalid="true"]) { border-color:#b00020; background:#fff8f8; }
 .recipient-card:has(:focus-visible) { outline:3px solid var(--blue); outline-offset:4px; }
 .recipient-card strong { display:block; font-size:1.375rem; line-height:1.4; }
 .recipient-card .field-help { display:block; margin-top:6px; }

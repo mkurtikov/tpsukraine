@@ -2,6 +2,7 @@ import { buildLetter, contactFor, duckworthInitiative, nextRecipientForState, re
 import { states } from '../lib/states';
 import { zipWarning } from '../lib/zip';
 import { representativeById, representativeLabel, searchRepresentatives, type Representative } from '../lib/representatives';
+import { requiredLetterIssues, type RequiredField } from '../lib/letter-validation';
 
 const root = document.querySelector<HTMLFormElement>('#letter-builder');
 if (root) {
@@ -42,6 +43,7 @@ if (root) {
   const panels = [...root.querySelectorAll<HTMLElement>('[data-step]')];
   const stepLinks = [...root.querySelectorAll<HTMLButtonElement>('[data-step-link]')];
   const previouslySent = new Set<string>();
+  const requiredReviewed = new Set<RequiredField>();
   const dataWarning = 'Please double check your data. It may be incomplete or incorrect.';
   let step = 0;
   let furthestStep = 0;
@@ -68,12 +70,32 @@ if (root) {
     supportExtension: extension.checked, delivery: isPost() ? 'post' : 'online',
     representativeId,
   });
-  const hasDataIssues = () => !fullName.value.trim() || !city.value.trim() || !zip.value.trim()
-    || !!zipWarning(zip.value, state.value) || (isPost() && !street.value.trim())
-    || (isRepresentative() && !selectedRepresentative());
+  const hasDataIssues = () => requiredLetterIssues(details(), 3).length > 0 || !!zipWarning(zip.value, state.value);
+  const requiredWarning = (field: RequiredField) => requiredReviewed.has(field)
+    ? requiredLetterIssues(details(), 3).find(issue => issue.field === field)?.message ?? '' : '';
+
+  function renderRequiredWarnings() {
+    for (const field of ['state', 'full-name', 'city', 'street-address', 'recipient'] as const) {
+      const message = requiredWarning(field);
+      for (const prefix of ['', 'review-']) {
+        const warningId = field === 'recipient' && prefix ? 'review-recipient-required' : `${prefix}${field}-warning`;
+        element(warningId).textContent = message; show(warningId, !!message);
+        if (field === 'recipient' && !prefix) {
+          root!.querySelectorAll<HTMLInputElement>('input[name="recipient"]').forEach(radio => radio.setAttribute('aria-invalid', String(!!message)));
+        } else element(`${prefix}${field}`).setAttribute('aria-invalid', String(!!message));
+      }
+    }
+  }
+
+  function revealMissingFields(throughStep: number) {
+    const issues = requiredLetterIssues(details(), throughStep);
+    issues.forEach(issue => requiredReviewed.add(issue.field));
+    renderRequiredWarnings(); renderZipWarning(); renderRepresentativeWarning();
+    return issues;
+  }
 
   function renderRepresentativeWarning() {
-    const warning = representativeNameReviewed ? representativeNameWarning() : '';
+    const warning = requiredWarning('representative-name') || (representativeNameReviewed ? representativeNameWarning() : '');
     for (const prefix of ['', 'review-']) {
       element(`${prefix}representative-name-warning`).textContent = warning;
       show(`${prefix}representative-name-warning`, !!warning);
@@ -159,7 +181,7 @@ if (root) {
   function closeRepresentativeSearches() { searchControls.forEach(control => control.close()); }
 
   function renderZipWarning() {
-    const warning = zipReviewed ? zipWarning(zip.value, state.value) : '';
+    const warning = requiredWarning('zip-code') || (zipReviewed ? zipWarning(zip.value, state.value) : '');
     for (const prefix of ['', 'review-']) {
       element(`${prefix}zip-warning`).textContent = warning;
       show(`${prefix}zip-warning`, !!warning);
@@ -198,9 +220,8 @@ if (root) {
   }
 
   function renderProgress() {
-    const available = !states[state.value] ? 0 : !hasRecipient() ? 2 : 3;
     stepLinks.forEach((link, index) => {
-      link.disabled = index !== step && index > Math.min(furthestStep, available);
+      link.disabled = index !== step && index > furthestStep;
       if (index === step) link.setAttribute('aria-current', 'step');
       else link.removeAttribute('aria-current');
     });
@@ -218,6 +239,7 @@ if (root) {
       label.className = 'recipient-card';
       const radio = document.createElement('input');
       radio.type = 'radio'; radio.name = 'recipient'; radio.value = senator.id;
+      radio.required = true;
       radio.checked = senator.id === recipientId;
       const description = document.createElement('span');
       const name = document.createElement('strong');
@@ -238,6 +260,7 @@ if (root) {
       label.className = 'recipient-card representative-card';
       const radio = document.createElement('input');
       radio.type = 'radio'; radio.name = 'recipient'; radio.value = representativeRecipient;
+      radio.required = true;
       radio.checked = isRepresentative();
       radio.setAttribute('aria-controls', 'representative-details');
       const description = document.createElement('span');
@@ -271,7 +294,7 @@ if (root) {
   function updateLetter() {
     const senator = person();
     const representative = isRepresentative();
-    syncEditorFields(); renderZipWarning(); renderRepresentativeWarning(); renderProgress(); renderRecipientContext(senator);
+    syncEditorFields(); renderRequiredWarnings(); renderZipWarning(); renderRepresentativeWarning(); renderProgress(); renderRecipientContext(senator);
     show('representative-details', representative);
     show('review-representative-details', representative);
     show('representative-postal-details', representative);
@@ -287,6 +310,8 @@ if (root) {
     show('postal-details', isPost()); show('postal-instructions', hasRecipient() && isPost()); show('online-instructions', hasRecipient() && !isPost());
     show('review-recipient-warning', step === 3 && !hasRecipient());
     street.disabled = !isPost();
+    street.required = isPost(); input('review-street-address').required = isPost();
+    show('review-street-required', isPost());
     preview.value = buildLetter(details());
     button('copy-letter').disabled = !preview.value;
     button('copy-postal-letter').disabled = !preview.value;
@@ -325,31 +350,7 @@ if (root) {
     }
   }
 
-  function showStateWarning() {
-    const unsupported = state.value === 'no-senators';
-    const message = unsupported
-      ? 'D.C. and U.S. territories do not have U.S. senators. This builder currently supports residents of the 50 states.'
-      : 'Choose your home state to find your senators.';
-    for (const prefix of ['', 'review-']) {
-      element(`${prefix}state-warning`).textContent = message;
-      show(`${prefix}state-warning`, true);
-      element(`${prefix}state`).setAttribute('aria-invalid', String(!unsupported));
-    }
-  }
-
-  function goTo(next: number) {
-    closeRepresentativeSearches();
-    if (next > 0 && !states[state.value]) {
-      showStateWarning();
-      if (step === 3) editor.open = true;
-      (step === 3 ? element('review-state') : state).focus(); return;
-    }
-    if (next > 2 && !hasRecipient()) {
-      show('recipient-warning', true);
-      if (step === 3) { editor.open = true; editorRecipient.focus(); }
-      else root!.querySelector<HTMLInputElement>('input[name="recipient"]')?.focus();
-      return;
-    }
+  function showStep(next: number) {
     step = Math.max(0, Math.min(3, next));
     furthestStep = Math.max(step, furthestStep);
     panels.forEach((panel, i) => { panel.hidden = i !== step; });
@@ -357,6 +358,35 @@ if (root) {
     const heading = panels[step].querySelector<HTMLElement>('h2')!;
     heading.focus({ preventScroll: true });
     root!.scrollIntoView({ behavior: 'instant', block: 'start' });
+  }
+
+  function validateRequired(throughStep: number) {
+    const [first] = revealMissingFields(throughStep);
+    if (!first) return true;
+    let field: HTMLElement;
+    if (step === 3) {
+      editor.open = true;
+      field = element(`review-${first.field}`);
+    } else {
+      if (step !== first.step) showStep(first.step);
+      if (first.field === 'representative-name') representativeDetails.open = true;
+      field = first.field === 'recipient'
+        ? root!.querySelector<HTMLInputElement>('input[name="recipient"]')!
+        : element(first.field);
+    }
+    field.focus({ preventScroll: true });
+    field.scrollIntoView({ behavior: 'instant', block: 'center' });
+    return false;
+  }
+
+  function goTo(next: number) {
+    next = Math.max(0, Math.min(3, next));
+    closeRepresentativeSearches();
+    if (next > step) {
+      zipReviewed = true;
+      if (!validateRequired(next - 1)) return;
+    }
+    showStep(next);
   }
 
   root.addEventListener('submit', event => { event.preventDefault(); if (step < 3) goTo(step + 1); });
@@ -378,11 +408,7 @@ if (root) {
     recipientId = nextRecipientForState(state.value, previouslySent, representativeId);
     if (isRepresentative()) representativeDetails.open = true;
     furthestStep = step === 3 ? 3 : Math.min(furthestStep, 2);
-    for (const prefix of ['', 'review-']) {
-      show(`${prefix}state-warning`, false); element(`${prefix}state`).setAttribute('aria-invalid', 'false');
-    }
-    show('recipient-warning', false);
-    if (state.value === 'no-senators') showStateWarning();
+    if (state.value === 'no-senators') requiredReviewed.add('state');
     renderRecipients();
   }
   root.addEventListener('change', event => {
@@ -406,8 +432,19 @@ if (root) {
     if (target === representativeName || target.dataset.detailField === 'representative-name') representativeNameReviewed = false;
     clearActionStatus(); updateLetter();
   });
-  for (const field of [zip, input('review-zip-code')]) {
-    field.addEventListener('blur', () => { zipReviewed = true; renderZipWarning(); });
+  for (const name of ['state', 'zip-code', 'full-name', 'city', 'street-address'] as const) {
+    for (const prefix of ['', 'review-']) {
+      const field = element(`${prefix}${name}`);
+      field.addEventListener('blur', () => {
+        // Let the next click finish before a new warning shifts the form layout.
+        window.setTimeout(() => {
+          if (document.activeElement === field || !field.getClientRects().length) return;
+          requiredReviewed.add(name);
+          if (name === 'zip-code') zipReviewed = true;
+          renderRequiredWarnings(); renderZipWarning();
+        }, 180);
+      });
+    }
   }
   function highlightAction(target: HTMLElement) {
     window.clearTimeout(attentionTimers.get(target));
@@ -429,6 +466,8 @@ if (root) {
     editor.open = true; input('review-full-name').focus();
   });
   button('close-details-editor').addEventListener('click', () => {
+    zipReviewed = true;
+    if (!validateRequired(3)) return;
     editor.open = false; editor.querySelector('summary')!.focus();
   });
 
@@ -441,7 +480,7 @@ if (root) {
   }
 
   async function copyLetter(copyButton: HTMLButtonElement) {
-    zipReviewed = true; representativeNameReviewed = true; updateLetter();
+    zipReviewed = true; representativeNameReviewed = true; revealMissingFields(3); updateLetter();
     const text = preview.value;
     if (!text) return;
     const currentVersion = version;
@@ -472,6 +511,7 @@ if (root) {
   button('copy-postal-letter').addEventListener('click', () => void copyLetter(button('copy-postal-letter')));
   button('print-letter').addEventListener('click', () => {
     zipReviewed = true; representativeNameReviewed = true; updateLetter();
+    if (!validateRequired(3)) return;
     if (!preview.value) return;
     actionStatus('', 'After printing, sign and mail your letter.', hasDataIssues());
     window.print();
@@ -491,6 +531,7 @@ if (root) {
 
   function resetSession() {
     root!.reset(); previouslySent.clear(); step = 0; furthestStep = 0; recipientId = ''; zipReviewed = false;
+    requiredReviewed.clear();
     representativeId = ''; closeRepresentativeSearches();
     editor.open = false;
     representativeDetails.open = true; representativeNameReviewed = false;

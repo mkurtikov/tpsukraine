@@ -19,14 +19,15 @@ const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your lett
       <nav class="wizard-progress" aria-label="Letter preparation steps">
         <ol>{steps.map((label, i) => <li><button type="button" data-step-link={i} aria-current={i === 0 ? 'step' : undefined} disabled={i !== 0}><span class="step-number" aria-hidden="true">{i + 1}</span><span>{label}</span></button></li>)}</ol>
       </nav>
+      <p class="field-help">Fields marked * are required. ZIP format or state-matching warnings will not stop you from continuing.</p>
       <section class="wizard-panel" data-step="0" aria-labelledby="location-title">
         <p class="eyebrow">Step 1 of 4</p>
         <h2 id="location-title" tabindex="-1">Where do you live?</h2>
         <p>Select your home state to find your two U.S. senators. Your ZIP code will appear in your letter.</p>
         <div class="location-fields">
           <div class="builder-field">
-            <label for="state">State</label>
-            <select id="state" aria-describedby="state-help state-warning">
+            <label for="state">State <span aria-hidden="true">*</span></label>
+            <select id="state" required aria-describedby="state-help state-warning">
               <option value="">Choose your state</option>
               {Object.entries(states).map(([code, name]) => <option value={code}>{name}</option>)}
               <option value="no-senators">District of Columbia or a U.S. territory</option>
@@ -35,8 +36,8 @@ const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your lett
             <p class="field-warning" id="state-warning" role="status" hidden></p>
           </div>
           <div class="builder-field">
-            <label for="zip-code">ZIP code</label>
-            <input id="zip-code" type="text" inputmode="numeric" aria-describedby="zip-help zip-warning" />
+            <label for="zip-code">ZIP code <span aria-hidden="true">*</span></label>
+            <input id="zip-code" required type="text" inputmode="numeric" aria-describedby="zip-help zip-warning" />
             <p class="field-help" id="zip-help">5 digits or ZIP+4, for example 12345-6789.</p>
             <p class="field-warning" id="zip-warning" role="status" hidden></p>
           </div>
@@ -48,8 +49,8 @@ const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your lett
         <h2 id="details-title" tabindex="-1">Make the letter yours.</h2>
         <p id="details-recipient"></p>
         <div class="personal-row">
-          <div class="builder-field"><label for="full-name">Full name</label><input id="full-name" type="text" maxlength="120" placeholder="First and last name" aria-describedby="privacy-note" /></div>
-          <div class="builder-field"><label for="city">City</label><input id="city" type="text" maxlength="100" /></div>
+          <div class="builder-field"><label for="full-name">Full name <span aria-hidden="true">*</span></label><input id="full-name" required type="text" maxlength="120" placeholder="First and last name" aria-describedby="privacy-note full-name-warning" /><p class="field-warning" id="full-name-warning" role="status" hidden></p></div>
+          <div class="builder-field"><label for="city">City <span aria-hidden="true">*</span></label><input id="city" required type="text" maxlength="100" aria-describedby="city-warning" /><p class="field-warning" id="city-warning" role="status" hidden></p></div>
         </div>
         <div class="location-summary"><p id="details-location"></p><button type="button" class="text-button" data-go="0">Edit state or ZIP</button></div>
         <div class="builder-section">
@@ -66,8 +67,8 @@ const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your lett
         <p class="eyebrow">Step 3 of 4</p>
         <h2 id="recipient-title" tabindex="-1">Who would you like to contact?</h2>
         <p id="recipient-intro"></p>
-        <fieldset class="recipient-fieldset">
-          <legend class="visually-hidden">Choose one recipient</legend>
+        <fieldset class="recipient-fieldset" aria-describedby="recipient-warning">
+          <legend class="visually-hidden">Choose one recipient (required)</legend>
           <div id="recipient-list" class="recipient-list"></div>
         </fieldset>
         <p class="field-warning" id="recipient-warning" role="status" hidden>Choose a recipient to prepare your letter.</p>
@@ -100,7 +101,7 @@ const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your lett
         </fieldset>
         <div id="postal-details" hidden>
           <p class="field-help postal-recommendation"><strong>We recommend the online contact form because this inquiry is urgent.</strong> You can still print and mail your letter.</p>
-          <div class="builder-field"><label for="street-address">Your street address and apartment</label><input id="street-address" type="text" maxlength="180" aria-describedby="street-help privacy-note" /><p class="field-help" id="street-help">Added to the printed letter as your return address.</p></div>
+          <div class="builder-field"><label for="street-address">Your street address and apartment <span aria-hidden="true">*</span></label><input id="street-address" type="text" maxlength="180" aria-describedby="street-help privacy-note street-address-warning" /><p class="field-warning" id="street-address-warning" role="status" hidden></p><p class="field-help" id="street-help">Required for postal mail. Apartment or unit is optional. Added as your return address.</p></div>
           <p class="field-help" id="representative-postal-details" hidden>The selected representative’s Washington office address is added automatically and shown below.</p>
         </div>
         <details class="details-editor" id="details-editor">
@@ -108,13 +109,13 @@ const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your lett
             <div class="details-editor-fields">
               <p class="field-help">Changes update your letter immediately. If you already copied it, copy it again after making changes.</p>
               <div class="personal-row">
-                <div class="builder-field"><label for="review-full-name">Full name</label><input id="review-full-name" data-detail-field="full-name" type="text" maxlength="120" aria-describedby="privacy-note" /></div>
-                <div class="builder-field"><label for="review-city">City</label><input id="review-city" data-detail-field="city" type="text" maxlength="100" /></div>
+                <div class="builder-field"><label for="review-full-name">Full name <span aria-hidden="true">*</span></label><input id="review-full-name" required data-detail-field="full-name" type="text" maxlength="120" aria-describedby="privacy-note review-full-name-warning" /><p class="field-warning" id="review-full-name-warning" role="status" hidden></p></div>
+                <div class="builder-field"><label for="review-city">City <span aria-hidden="true">*</span></label><input id="review-city" required data-detail-field="city" type="text" maxlength="100" aria-describedby="review-city-warning" /><p class="field-warning" id="review-city-warning" role="status" hidden></p></div>
               </div>
               <div class="location-fields">
                 <div class="builder-field">
-                  <label for="review-state">State</label>
-                  <select id="review-state" data-detail-field="state" aria-describedby="review-state-help review-state-warning">
+                  <label for="review-state">State <span aria-hidden="true">*</span></label>
+                  <select id="review-state" required data-detail-field="state" aria-describedby="review-state-help review-state-warning">
                     <option value="">Choose your state</option>
                     {Object.entries(states).map(([code, name]) => <option value={code}>{name}</option>)}
                     <option value="no-senators">District of Columbia or a U.S. territory</option>
@@ -122,11 +123,11 @@ const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your lett
                   <p class="field-help" id="review-state-help">Changing your state updates the available recipients. Check your selection below.</p>
                   <p class="field-warning" id="review-state-warning" role="status" hidden></p>
                 </div>
-                <div class="builder-field"><label for="review-zip-code">ZIP code</label><input id="review-zip-code" data-detail-field="zip-code" type="text" inputmode="numeric" aria-describedby="review-zip-warning" /><p class="field-warning" id="review-zip-warning" role="status" hidden></p></div>
+                <div class="builder-field"><label for="review-zip-code">ZIP code <span aria-hidden="true">*</span></label><input id="review-zip-code" required data-detail-field="zip-code" type="text" inputmode="numeric" aria-describedby="review-zip-warning" /><p class="field-warning" id="review-zip-warning" role="status" hidden></p></div>
               </div>
-              <div class="builder-field"><label for="review-recipient">Recipient</label><select id="review-recipient" aria-describedby="review-recipient-help"></select><p class="field-help" id="review-recipient-help">Choose who will receive this letter.</p></div>
+              <div class="builder-field"><label for="review-recipient">Recipient <span aria-hidden="true">*</span></label><select id="review-recipient" required aria-describedby="review-recipient-help review-recipient-required"></select><p class="field-warning" id="review-recipient-required" role="status" hidden></p><p class="field-help" id="review-recipient-help">Choose who will receive this letter.</p></div>
               <div id="review-representative-details" hidden><p class="field-help">Use <a href={representativeFinder} target="_blank" rel="noopener noreferrer">House.gov</a> to confirm your representative, then choose their name below.</p><RepresentativeSearch prefix="review-" /></div>
-              <div class="builder-field"><label for="review-street-address">Your street address and apartment</label><input id="review-street-address" data-detail-field="street-address" type="text" maxlength="180" aria-describedby="review-street-help privacy-note" /><p class="field-help" id="review-street-help">Used as your return address only when you choose postal mail.</p></div>
+              <div class="builder-field"><label for="review-street-address">Your street address and apartment <span id="review-street-required" aria-hidden="true" hidden>*</span></label><input id="review-street-address" data-detail-field="street-address" type="text" maxlength="180" aria-describedby="review-street-help privacy-note review-street-address-warning" /><p class="field-warning" id="review-street-address-warning" role="status" hidden></p><p class="field-help" id="review-street-help">Required only for postal mail. Apartment or unit is optional.</p></div>
               <div class="builder-section">
                 <label class="choice"><input id="review-us-citizen" data-detail-field="us-citizen" type="checkbox" checked aria-describedby="review-citizenship-help" /><span>I am a U.S. citizen.</span></label>
                 <p class="field-help" id="review-citizenship-help">Uncheck this box if you are not a U.S. citizen. Your letter will say “I live in…” instead.</p>

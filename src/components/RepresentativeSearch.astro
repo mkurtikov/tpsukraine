@@ -2,9 +2,9 @@
 const { prefix = '' } = Astro.props;
 ---
 <div class="builder-field representative-search" data-representative-search>
-  <label for={`${prefix}representative-name`}>Search for your representative</label>
+  <label for={`${prefix}representative-name`}>Search for your representative <span aria-hidden="true">*</span></label>
   <input id={`${prefix}representative-name`} data-detail-field={prefix ? 'representative-name' : undefined}
-    type="text" role="combobox" aria-autocomplete="list" aria-expanded="false"
+    type="text" role="combobox" aria-required="true" aria-autocomplete="list" aria-expanded="false"
     aria-controls={`${prefix}representative-results`} autocomplete="off" spellcheck="false"
     maxlength="120" placeholder="Type a first or last name"
     aria-describedby={`${prefix}representative-name-help ${prefix}representative-name-warning ${prefix}representative-selection`} />
