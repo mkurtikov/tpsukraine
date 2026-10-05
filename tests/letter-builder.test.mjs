@@ -17,12 +17,12 @@ const details = {
 };
 
 test('required validation follows the wizard stages and rejects whitespace-only fields', () => {
-  const empty = { ...details, state: '', zip: '  ', fullName: '\t', city: '', recipient: '', street: '', delivery: 'post' };
+  const empty = { ...details, state: '', zip: '  ', fullName: '\t', city: '', isUsCitizen: null, recipient: '', street: '', delivery: 'post' };
   const fields = stage => requiredLetterIssues(empty, stage).map(issue => issue.field);
   assert.deepEqual(fields(0), ['state', 'zip-code']);
-  assert.deepEqual(fields(1), ['state', 'zip-code', 'full-name', 'city']);
-  assert.deepEqual(fields(2), ['state', 'zip-code', 'full-name', 'city', 'recipient']);
-  assert.deepEqual(fields(3), ['state', 'zip-code', 'full-name', 'city', 'recipient', 'street-address']);
+  assert.deepEqual(fields(1), ['state', 'zip-code', 'full-name', 'city', 'us-citizen']);
+  assert.deepEqual(fields(2), ['state', 'zip-code', 'full-name', 'city', 'us-citizen', 'recipient']);
+  assert.deepEqual(fields(3), ['state', 'zip-code', 'full-name', 'city', 'us-citizen', 'recipient', 'street-address']);
   assert.deepEqual(requiredLetterIssues(details, 3), []);
 });
 
@@ -34,12 +34,32 @@ test('nonempty questionable ZIP codes never block required validation', () => {
   assert.deepEqual(requiredLetterIssues({ ...details, zip: '' }, 0).map(issue => issue.field), ['zip-code']);
 });
 
-test('names and cities need only text; both statements and online street address stay optional', () => {
+test('names and cities need only text; extension support and online street address stay optional', () => {
   assert.deepEqual(requiredLetterIssues({ ...details, fullName: '李', city: 'X', street: '',
     isUsCitizen: false, supportExtension: false }, 3), []);
   assert.deepEqual(requiredLetterIssues({ ...details, fullName: '123', city: '123' }, 3), []);
   assert.deepEqual(requiredLetterIssues({ ...details, delivery: 'post', street: ' ' }, 3).map(issue => issue.field), ['street-address']);
   assert.deepEqual(requiredLetterIssues({ ...details, delivery: 'post', street: '' }, 2), []);
+});
+
+test('citizenship requires an explicit Yes or No, and No is a valid answer', () => {
+  const unanswered = { ...details, isUsCitizen: null };
+  assert.deepEqual(requiredLetterIssues(unanswered, 0), []);
+  for (const stage of [1, 2, 3]) {
+    assert.deepEqual(requiredLetterIssues(unanswered, stage).map(issue => issue.field), ['us-citizen']);
+  }
+  for (const isUsCitizen of [true, false]) {
+    assert.deepEqual(requiredLetterIssues({ ...details, isUsCitizen }, 3), []);
+  }
+  for (const recipient of [details.recipient, 'representative']) {
+    const addressed = { ...details, recipient, representativeId: 'R000614' };
+    assert.match(buildLetter({ ...addressed, isUsCitizen: true }), /I am a U\.S\. citizen residing in Dallas/);
+    for (const isUsCitizen of [false, null]) {
+      const letter = buildLetter({ ...addressed, isUsCitizen });
+      assert.match(letter, /I live in Dallas/);
+      assert.doesNotMatch(letter, /I am a U\.S\. citizen/);
+    }
+  }
 });
 
 test('a recipient must be selected, including an actual representative search result', () => {

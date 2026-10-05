@@ -2,7 +2,7 @@ import { representativeRecipient, senatorsForState, type LetterDetails } from '.
 import { representativeById } from './representatives';
 import { states } from './states';
 
-export type RequiredField = 'state' | 'zip-code' | 'full-name' | 'city' | 'recipient' | 'representative-name' | 'street-address';
+export type RequiredField = 'state' | 'zip-code' | 'full-name' | 'city' | 'us-citizen' | 'recipient' | 'representative-name' | 'street-address';
 export interface RequiredIssue { field: RequiredField; step: number; message: string }
 
 /** Presence/selection only. ZIP correctness is a separate, non-blocking advisory. */
@@ -17,6 +17,7 @@ export function requiredLetterIssues(details: LetterDetails, throughStep: number
   missing('zip-code', 0, !details.zip.trim(), 'Please enter your ZIP code.');
   missing('full-name', 1, !details.fullName.trim(), 'Please enter your full name.');
   missing('city', 1, !details.city.trim(), 'Please enter your city.');
+  missing('us-citizen', 1, typeof details.isUsCitizen !== 'boolean', 'Please select Yes or No for U.S. citizenship.');
   missing('recipient', 2, details.recipient !== representativeRecipient
     && !senatorsForState(details.state).some(person => person.id === details.recipient), 'Please choose a recipient.');
   missing('representative-name', 2, details.recipient === representativeRecipient

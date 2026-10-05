@@ -43,7 +43,7 @@ export interface LetterDetails {
   city: string;
   zip: string;
   street: string;
-  isUsCitizen: boolean;
+  isUsCitizen: boolean | null;
   supportExtension: boolean;
   delivery: 'online' | 'post';
   representativeId?: string;

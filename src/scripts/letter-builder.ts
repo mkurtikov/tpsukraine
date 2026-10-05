@@ -15,7 +15,10 @@ if (root) {
   const fullName = input('full-name');
   const city = input('city');
   const street = input('street-address');
-  const citizenship = input('us-citizen');
+  const citizenship = (): boolean | null => {
+    const answer = root.querySelector<HTMLInputElement>('input[name="us-citizen"]:checked')?.value;
+    return answer ? answer === 'yes' : null;
+  };
   const extension = input('support-extension');
   const representativeName = input('representative-name');
   const representativeDetails = element('representative-details') as HTMLDetailsElement;
@@ -66,7 +69,7 @@ if (root) {
   const isPost = () => root.querySelector<HTMLInputElement>('input[name="delivery"]:checked')?.value === 'post';
   const details = (): LetterDetails => ({
     recipient: recipientId, state: state.value, fullName: fullName.value, city: city.value,
-    zip: zip.value, street: street.value, isUsCitizen: citizenship.checked,
+    zip: zip.value, street: street.value, isUsCitizen: citizenship(),
     supportExtension: extension.checked, delivery: isPost() ? 'post' : 'online',
     representativeId,
   });
@@ -75,7 +78,7 @@ if (root) {
     ? requiredLetterIssues(details(), 3).find(issue => issue.field === field)?.message ?? '' : '';
 
   function renderRequiredWarnings() {
-    for (const field of ['state', 'full-name', 'city', 'street-address', 'recipient'] as const) {
+    for (const field of ['state', 'full-name', 'city', 'us-citizen', 'street-address', 'recipient'] as const) {
       const message = requiredWarning(field);
       for (const prefix of ['', 'review-']) {
         const warningId = field === 'recipient' && prefix ? 'review-recipient-required' : `${prefix}${field}-warning`;
@@ -192,7 +195,7 @@ if (root) {
   function syncEditorFields() {
     for (const field of editorFields) {
       const original = input(field.dataset.detailField!);
-      if (field instanceof HTMLInputElement && field.type === 'checkbox') field.checked = original.checked;
+      if (field instanceof HTMLInputElement && ['checkbox', 'radio'].includes(field.type)) field.checked = original.checked;
       else if (field.value !== original.value) field.value = original.value;
     }
     editorRecipient.value = recipientId;
@@ -201,7 +204,7 @@ if (root) {
   function applyEditorField(target: HTMLInputElement | HTMLSelectElement) {
     if (!target.dataset.detailField) return;
     const original = input(target.dataset.detailField);
-    if (target instanceof HTMLInputElement && target.type === 'checkbox') original.checked = target.checked;
+    if (target instanceof HTMLInputElement && ['checkbox', 'radio'].includes(target.type)) original.checked = target.checked;
     else original.value = target.value;
   }
 
@@ -306,7 +309,9 @@ if (root) {
     element('details-location').textContent = location;
     element('details-recipient').textContent = hasRecipient() ? `Preparing a letter to ${recipientLabel()}.` : 'Add your details, then choose a recipient on the next step.';
     element('letter-recipient').textContent = hasRecipient() ? `To ${recipientLabel()} · ${states[state.value]}` : '';
-    element('review-details').textContent = `${fullName.value.trim() || 'Name not entered'} · ${city.value.trim() || 'City not entered'}\n${location}\n${citizenship.checked ? 'U.S. citizenship stated in the letter' : 'Opening: “I live in…”'} · ${extension.checked ? 'Supports an 18-month extension' : 'Information request only'}`;
+    const citizenshipSummary = citizenship() === null ? 'Citizenship answer not selected'
+      : citizenship() ? 'U.S. citizenship stated in the letter' : 'Opening: “I live in…”';
+    element('review-details').textContent = `${fullName.value.trim() || 'Name not entered'} · ${city.value.trim() || 'City not entered'}\n${location}\n${citizenshipSummary} · ${extension.checked ? 'Supports an 18-month extension' : 'Information request only'}`;
     show('postal-details', isPost()); show('postal-instructions', hasRecipient() && isPost()); show('online-instructions', hasRecipient() && !isPost());
     show('review-recipient-warning', step === 3 && !hasRecipient());
     street.disabled = !isPost();
@@ -374,6 +379,7 @@ if (root) {
         ? root!.querySelector<HTMLInputElement>('input[name="recipient"]')!
         : element(first.field);
     }
+    if (first.field === 'us-citizen') field = field.querySelector<HTMLInputElement>('input')!;
     field.focus({ preventScroll: true });
     field.scrollIntoView({ behavior: 'instant', block: 'center' });
     return false;

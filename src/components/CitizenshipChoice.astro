@@ -1,0 +1,19 @@
+---
+const { prefix = '' } = Astro.props;
+---
+<div class="builder-section">
+  <fieldset id={`${prefix}us-citizen`} class="citizenship-fieldset" aria-describedby={`${prefix}citizenship-help ${prefix}us-citizen-warning`}>
+    <legend>I am a U.S. citizen. <span aria-hidden="true">*</span></legend>
+    <div class="citizenship-choices">
+      {['yes', 'no'].map(value => (
+        <label class="choice">
+          <input id={`${prefix}us-citizen-${value}`} name={`${prefix}us-citizen`} type="radio" value={value} required
+            data-detail-field={prefix ? `us-citizen-${value}` : undefined} />
+          <span>{value === 'yes' ? 'Yes' : 'No'}</span>
+        </label>
+      ))}
+    </div>
+    <p class="field-help" id={`${prefix}citizenship-help`}>Choose Yes to include “I am a U.S. citizen residing in…”. Choose No to use “I live in…” instead.</p>
+    <p class="field-warning" id={`${prefix}us-citizen-warning`} role="status" hidden></p>
+  </fieldset>
+</div>

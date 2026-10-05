@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { states } from '../lib/states';
 import { representativeFinder } from '../lib/letter-builder';
 import RepresentativeSearch from '../components/RepresentativeSearch.astro';
+import CitizenshipChoice from '../components/CitizenshipChoice.astro';
 import '../styles/letter-builder.css';
 const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your letter'];
 ---
@@ -53,10 +54,7 @@ const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your lett
           <div class="builder-field"><label for="city">City <span aria-hidden="true">*</span></label><input id="city" required type="text" maxlength="100" aria-describedby="city-warning" /><p class="field-warning" id="city-warning" role="status" hidden></p></div>
         </div>
         <div class="location-summary"><p id="details-location"></p><button type="button" class="text-button" data-go="0">Edit state or ZIP</button></div>
-        <div class="builder-section">
-          <label class="choice" for="us-citizen"><input id="us-citizen" type="checkbox" checked aria-describedby="citizenship-help" /><span>I am a U.S. citizen.</span></label>
-          <p class="field-help" id="citizenship-help">Uncheck this box if you are not a U.S. citizen. Your letter will say “I live in…” instead.</p>
-        </div>
+        <CitizenshipChoice />
         <div class="builder-section">
           <label class="choice" for="support-extension"><input id="support-extension" type="checkbox" checked aria-describedby="extension-help" /><span>I support an 18-month extension of TPS for Ukraine.</span></label>
           <p class="field-help" id="extension-help">This is optional. Uncheck the box to remove the paragraph supporting an extension and request information and official clarification only.</p>
@@ -128,10 +126,7 @@ const steps = ['Your location', 'Your details', 'Choose a recipient', 'Your lett
               <div class="builder-field"><label for="review-recipient">Recipient <span aria-hidden="true">*</span></label><select id="review-recipient" required aria-describedby="review-recipient-help review-recipient-required"></select><p class="field-warning" id="review-recipient-required" role="status" hidden></p><p class="field-help" id="review-recipient-help">Choose who will receive this letter.</p></div>
               <div id="review-representative-details" hidden><p class="field-help">Use <a href={representativeFinder} target="_blank" rel="noopener noreferrer">House.gov</a> to confirm your representative, then choose their name below.</p><RepresentativeSearch prefix="review-" /></div>
               <div class="builder-field"><label for="review-street-address">Your street address and apartment <span id="review-street-required" aria-hidden="true" hidden>*</span></label><input id="review-street-address" data-detail-field="street-address" type="text" maxlength="180" aria-describedby="review-street-help privacy-note review-street-address-warning" /><p class="field-warning" id="review-street-address-warning" role="status" hidden></p><p class="field-help" id="review-street-help">Required only for postal mail. Apartment or unit is optional.</p></div>
-              <div class="builder-section">
-                <label class="choice"><input id="review-us-citizen" data-detail-field="us-citizen" type="checkbox" checked aria-describedby="review-citizenship-help" /><span>I am a U.S. citizen.</span></label>
-                <p class="field-help" id="review-citizenship-help">Uncheck this box if you are not a U.S. citizen. Your letter will say “I live in…” instead.</p>
-              </div>
+              <CitizenshipChoice prefix="review-" />
               <div class="builder-section">
                 <label class="choice"><input id="review-support-extension" data-detail-field="support-extension" type="checkbox" checked aria-describedby="review-extension-help" /><span>I support an 18-month extension of TPS for Ukraine.</span></label>
                 <p class="field-help" id="review-extension-help">This is optional. Uncheck the box to request information and official clarification only.</p>
